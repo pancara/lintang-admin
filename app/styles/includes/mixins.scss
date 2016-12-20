@@ -1,0 +1,29 @@
+
+$placeholder_text_color: transparentize(darken(#A18D58, 25), 0.3);
+
+@mixin input-placeholder($text_color: $placeholder_text_color, $text_align:left, $font_size:14px) {
+
+  &::-webkit-input-placeholder {
+    color: $text_color;
+    font-size: $font_size;
+    text-align: $text_align;
+  }
+
+  &::-moz-placeholder {
+    color: $text_color;
+    font-size: $font_size;
+    text-align: $text_align;
+    opacity: 1;
+  }
+  /* firefox 19+ */
+  &:-ms-input-placeholder {
+    color: $text_color;
+    font-size: $font_size;
+    text-align: $text_align;
+  }
+  &:-moz-placeholder {
+    color: $text_color;
+    font-size: $font_size;
+    text-align: $text_align;
+  }
+}

@@ -1,0 +1,127 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+          {{#if error}}
+              <div class="alert alert-danger" role="alert">
+                {{errorMessage}}
+              </div>
+          {{/if}}
+
+          {{#if success}}
+              <div class="alert alert-success" role="alert">
+                {{errorMessage}}
+              </div>
+          {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Operator</span></div>
+        <div class="col-lg-5">
+            {{operator.code}} {{operator.name}}
+            {{#if (not searchMode)}}
+              <button class="btn btn-primary btn-xs" {{action "searchOperator" true}}>Select Operator</button>
+            {{/if}}
+        </div>
+    </div>
+
+  {{#if searchMode}}
+      <div class="row">
+          <div class="col-lg-10 col-lg-offset-2">
+              <button class="btn btn-xs pull-right" {{action "searchOperator" false}}>
+                {{fa-icon "remove"}}
+              </button>
+
+              <div class="form-inline" style="margin-bottom: 5px;">
+                  <div class="form-group">
+                    {{input class="form-control" value=keyword placeholder="Code"}}
+                      &nbsp;
+                      <button class="btn btn-sm pull-right" {{action "doSearchOperator"}}>Search</button>
+                  </div>
+              </div>
+              <div>
+                {{pw-table data=data
+                headerTemplate="search-operator/header"
+                footerTemplate="search-operator/footer"
+                masterTemplate="search-operator/row"
+                detailTemplate="search-operator/row-detail"
+                isZebra=false
+                selectOperator=(action "selectOperator")
+                }}
+              </div>
+              <div>
+                {{pw-paging register-as=paging refresh=(action "refreshOperators")}}
+              </div>
+          </div>
+      </div>
+  {{/if}}
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">First Name</span></div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=firstName}}
+        </div>
+
+        <div class="col-lg-2"><span class="field">Last Name</span></div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=lastName}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Gender</span></div>
+        <div class="col-lg-5">
+            <select class="form-control" onchange={{action "selectGender" value="target.value"}}>
+                <option>-</option>
+              {{#each genders as |genderOption|}}
+                  <option value={{genderOption}} selected={{eq gender genderOption}}>{{genderOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">User Name</span></div>
+        <div class="col-lg-5">
+          {{input class="form-control" value=username}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Role</span>
+        </div>
+        <div class="col-lg-3">
+            <select class="form-control" onchange={{action "selectRole" value="target.value"}}>
+                <option>-</option>
+              {{#each operatorRoles as |roleOption|}}
+                  <option value={{roleOption}} selected={{eq role roleOption}}>{{roleOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Password</span></div>
+        <div class="col-lg-5">
+          {{input class="form-control" type="password" value=password}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Confirm</span></div>
+        <div class="col-lg-5">
+          {{input class="form-control" type="password" value=confirm}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-2">
+            <button class="btn btn-success btn-sm" {{action "save"}}>
+              {{fa-icon "check"}} &nbsp; Save
+            </button>
+            <button class="btn btn-danger btn-sm" {{action "cancel"}}>
+              {{fa-icon "remove"}} &nbsp; Cancel
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<td colspan="2" style="background: #EEE;"></td>
+<td colspan="7">
+    <table class="pw-table pw-bordered">
+        <tbody>
+        <tr>
+            <td style="width: 120px;"><span class="field">First Name:</span></td>
+            <td>
+              {{data.firstName}}
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name :</td>
+            <td>
+              {{data.lastName}}
+            </td>
+        </tr>
+        <tr>
+            <td>Gender :</td>
+            <td>{{data.gender}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="btn btn-primary btn-xs" {{action "click"  "updateProfile" data}}>
+                  {{fa-icon "pencil"}}
+                    Update Profile
+                </button>
+
+                <button class="btn btn-warning btn-xs" {{action "click"  "updateRole" data}}>
+                  {{fa-icon "pencil"}}
+                    Set Role
+                </button>
+
+                &nbsp;
+
+                <button class="btn btn-danger btn-xs" {{action "click"  "blockUser" data}}>
+                    {{fa-icon "stop"}}
+                    {{if data.isBlocked "Unblock" "Block"}}
+                </button>
+
+                <button class="btn btn-danger btn-xs" {{action "click"  "deleteUser" data}}>
+                  {{fa-icon "remove"}}
+                    Remove
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</td>

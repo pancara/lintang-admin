@@ -1,0 +1,18 @@
+<thead>
+{{partial headerTemplate}}
+</thead>
+<tbody>
+{{#each data.data as |rowData index|}}
+  {{pw-table-row
+  data=rowData
+  masterTemplate=masterTemplate
+  detailTemplate=detailTemplate
+  index=(add data.start index 1)
+  onActionTriggered=(action "triggerAction")
+  }}
+{{/each}}
+</tbody>
+
+<tfoot>
+{{partial footerTemplate}}
+</tfoot>

@@ -1,0 +1,56 @@
+.pw-month-calendar {
+  font-family: "Gotham Pro";
+  padding: 0 0 0 0;
+  margin-top: 0px;
+  display: block;
+  table {
+    width: 100%;
+    thead {
+      th {
+        font-size: 13px;
+        text-align: center;
+        color: #666;
+        padding: 8px 8px 8px 8px;
+        span {
+          padding: 12px auto 12px auto;
+          line-height: 18px;
+          font-size: 15px;
+          display: block;
+        }
+        button {
+          background: darken(#C8BA81, 10);
+          border: none;
+          padding: 8px 16px 8px 16px;
+          border-radius: 16px;
+          outline: none;
+          i {
+            color: #FFF;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    tbody {
+      td {
+        padding: 5px 8px 5px 8px;
+        text-align: center;
+        span {
+          padding: 10px 12px;
+          font-size: 15px;
+          color: #BBB;
+          &.in-month {
+            background: transparent;
+            color: #A48C2D;
+            cursor: default;
+            &.marked {
+              background: transparentize(#A48C2D, 0.4);
+              color: #FFF;
+              border-radius: 7px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

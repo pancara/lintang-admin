@@ -1,0 +1,24 @@
+<div class="sidebar-title">
+    {{#unless collapsed}}
+      <img src="images/logo-small.png" class="sidebar-logo" {{action "buttonToggleCollapsed"}}/>
+    {{/unless}}
+    {{#if collapsed}}
+      {{pw-sidebar-button toggleCollapse=(action "buttonToggleCollapsed")}}
+    {{/if}}
+</div>
+<ul class="sidebar-menu">
+  {{#each menus as |menu|}}
+    {{
+    pw-sidebar-menu
+    routeName=menu.routeName
+    iconName=menu.iconName
+    labelText=menu.labelText
+    hasChild=menu.hasChild
+    submenus=menu.submenus
+    onToggleExpand=(action "menuToggleExpand")
+    onCreated=(action "menuCreated")
+    onSelect=(action 'menuSelected')
+    }}
+  {{/each}}
+
+</ul>

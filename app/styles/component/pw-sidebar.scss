@@ -1,0 +1,276 @@
+/* Sidebar Styles */
+
+// sidebar
+$sidebar_width: 250px;
+$sidebar_collapsed_width: 60px;
+$sidebar_color: #1C1B19;
+$sidebar_menu_color: #201F1B;
+$sidebar_submenu_color: darken($sidebar_menu_color, 4%);
+$sidebar_menu_hover_color: #201F1B;
+
+//darken(saturate($menu_color, 40%), 10%);
+
+$sidebar_menu_active_color: tint(#201F1B, 2);
+//darken(saturate($menu_color, 40%), 10%);
+$sidebar_menu_text_color: #7b734a;
+$sidebar_brand_color: #1C1B19;
+
+.wrapper {
+  padding-left: 0;
+  min-height: 100vh;
+
+  .sidebar {
+    z-index: 1000;
+    background: $sidebar_color;
+    outline: none;
+    div.sidebar-title {
+      background: $sidebar_brand_color;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      clear: both;
+      height: 80px;
+      text-align: center;
+      .sidebar-logo {
+        opacity: 1.0;
+        @include transition(all 500ms ease-in-out);
+        width: 70%;
+        margin: 8px auto 16px auto;
+      }
+
+      .sidebar-button {
+        cursor: default;
+        background: $sidebar_brand_color;
+        display: inline-block;
+        padding: 0px 4px;
+        border-radius: 1px;
+        border: 1px solid lighten(#575033, 3);
+        @include transition(all 500ms ease-in-out);
+
+        div {
+          background: lighten(#575033, 5);
+          height: 3px;
+          margin-top: 4px;
+          margin-bottom: 0px;
+          border-radius: 2px;
+          min-width: 15px;
+          &:last-child {
+            margin-bottom: 4px;
+          }
+        }
+        &:hover {
+          background: tint($sidebar_color, 5%);
+          @include transition(all 500ms ease);
+          div {
+            background: rgba(255, 255, 255, 1.0);
+          }
+        }
+      }
+    }
+
+    ul.sidebar-menu {
+      margin: 0 0;
+      padding: 0 0;
+      width: 100%;
+      list-style: none;
+      border-top: 0px solid rgba(69, 74, 84, 0.1);
+
+      li {
+        text-indent: 20px;
+        line-height: 40px;
+        color: #FFF;
+        border-bottom: 0px solid lighten($sidebar_color, 2);
+        display: block;
+        * {
+          cursor: default;
+        }
+
+        i.fa {
+          margin-right: 16px;
+        }
+        img.icon-expand {
+          width: 12px;
+          height: 12px;
+          display: none;
+          float: right;
+          margin-right: 16px;
+          margin-top: 10px;
+          padding: 0px 0px;
+        }
+        &.active {
+          > a {
+            background: $sidebar_menu_active_color;
+            @include transition(background 200ms ease);
+          }
+
+          &:hover {
+            > a {
+              background: $sidebar_menu_active_color;
+            }
+          }
+        }
+
+        &.has-child {
+          > img.icon-expand {
+            display: inline;
+            @include transition(all 500ms ease-in-out);
+          }
+          overflow: hidden;
+          > ul {
+            height: 0px;
+            @include transition(all 1s ease-in);
+            opacity: 0.0;
+          }
+
+          &.expanded {
+            > img.icon-expand {
+              @include transform(rotate(-180deg));
+              @include transition(all 500ms ease-in-out);
+            }
+
+            > ul {
+              display: block;
+              height: auto;
+              max-height: 100vh;
+              opacity: 1.0;
+              @include transition(all 1s ease-in-out);
+            }
+          }
+        }
+
+        ul {
+          display: none;
+          max-height: 0px;
+          padding: 0 0 0 0;
+          border-top: 0px solid rgba(69, 74, 84, 0.2);
+          @include transition(max-height 500ms ease);
+          li {
+            &:last-child {
+              border: none;
+            }
+            a {
+              padding-left: 16px;
+            }
+          }
+        }
+        a {
+          display: block;
+          text-decoration: none;
+          font-size: 12px;
+          color: $sidebar_menu_text_color;
+          background: transparent;
+          @include transition(all 500ms ease);
+          padding-left: 4px;
+          white-space: nowrap;
+          &:hover {
+            text-decoration: none;
+            color: lighten($sidebar_menu_text_color, 12);
+            background: $sidebar_menu_hover_color;
+          }
+          &:active,
+          &:focus {
+            text-decoration: none;
+          }
+
+          i {
+            display: inline-block;
+            width: 16px;
+            margin-left: -20px;
+          }
+
+          span {
+            padding: 0 0 0 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// responsive
+@media #{$media_query_desktop} {
+  .wrapper {
+    padding-left: $sidebar_width;
+    .sidebar {
+      width: 0;
+      position: fixed;
+      width: $sidebar_width;
+      height: 100vh;
+      left: $sidebar_width;
+      margin-left: -1 * $sidebar_width;
+      overflow-y: auto;
+      @include transition(all 500ms ease);
+      * {
+        box-sizing: border-box;
+      }
+    }
+
+    &.collapsed {
+      padding-left: $sidebar_collapsed_width;
+      .sidebar {
+        width: $sidebar_collapsed_width;
+        @include transition(all 500ms ease);
+        div.sidebar-title {
+          font-size: 0px;
+          padding: 0 0 0px 0;
+          text-align: center;
+          text-indent: 0;
+
+          div.sidebar-logo {
+            opacity: 0.0;
+            display: none;
+            @include transition(all 500ms ease-in-out);
+          }
+          div.sidebar-button {
+            display: inline-block;
+            margin: 24px 0px 16px 0px;
+            float: none;
+          }
+        }
+        ul.sidebar-menu {
+
+          li {
+            overflow: visible;
+            > a {
+              padding-left: 4px;
+              @include transition(all 500ms ease-in-out);
+              > span {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//phone
+@media #{$media_query_phone} {
+  .wrapper {
+    padding: 0px;
+    &.collapsed {
+      padding: 0px;
+      width: 100%;
+      display: block;
+      .sidebar {
+        ul.sidebar-menu {
+          display: none;
+        }
+      }
+      .page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+      }
+    }
+
+    .sidebar {
+      width: 100%;
+      display: block;
+      position: relative;
+      .sidebar {
+        position: relative;
+        display: block;
+      }
+    }
+  }
+}

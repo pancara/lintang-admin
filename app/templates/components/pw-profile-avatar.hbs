@@ -1,0 +1,39 @@
+<div class="info">
+    <h1>
+      {{profile.firstName}}
+      {{profile.lastName}}
+    </h1>
+    <h2>{{profile.username}}</h2>
+</div>
+
+<a class="avatar" {{action "showMenu"}}>
+  {{pw-image default="images/customer.png" class="photo"}}
+  <img src="images/tick-mark.svg" class="tick"/>
+</a>
+
+<ul class="profile-menu">
+    <li>
+        <a {{action "fireAction" "userProfile"}}>
+          {{fa-icon "user"}}
+            <span>User Profile</span>
+        </a>
+    </li>
+    <li>
+      <a {{action "fireAction" "changePassword"}}>
+          {{fa-icon "lock"}}
+          <span>Change Password</span>
+      </a>
+    </li>
+    <li>
+        <a {{action "fireAction" "refreshToken"}}>
+          {{fa-icon "refresh"}}
+            <span>Refresh Token</span>
+        </a>
+    </li>
+    <li>
+      <a {{action "fireAction" "logout"}}>
+        {{fa-icon "unlock"}}
+          <span>Logout</span>
+      </a>
+    </li>
+</ul>

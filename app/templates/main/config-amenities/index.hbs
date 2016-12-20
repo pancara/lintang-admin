@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pw-panel pw-panel-align-right">
+                <button class="btn btn-success btn-xs pull-left" {{action "add"}}>
+                  {{fa-icon "plus"}}&nbsp;
+                    Add
+                </button>
+
+                <button class="btn btn-xs" {{action "toggleFilter"}}>
+                  {{#if shownFilter }}
+                      Hide Filter &nbsp;
+                    {{fa-icon "caret-up"}}
+                  {{else}}
+                      Show Filter &nbsp;
+                    {{fa-icon "caret-down"}}
+                  {{/if}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-config-amenities-filter
+          register-as=filterConfigAmenities
+          shown=shownFilter
+          isZebra=true
+          applyFilter=(action "applyFilter")
+          }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-table data=data
+          headerTemplate="main/config-amenities/header"
+          footerTemplate="main/config-amenities/footer"
+          masterTemplate="main/config-amenities/row"
+          detailTemplate="main/config-amenities/row-detail"
+
+          isZebra=false
+          edit=(action "edit")
+          delete=(action "delete")
+
+          uploadFileChanged=(action "uploadFileChanged")
+          uploadProgress=(action "uploadProgress")
+          uploadCompleted=(action "uploadCompleted")
+          uploadError=(action "uploadError")
+          }}
+
+          {{pw-paging register-as=paging refresh=(action "refresh")}}
+        </div>
+    </div>
+</div>
+

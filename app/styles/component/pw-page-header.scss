@@ -1,0 +1,30 @@
+.page-header {
+  background: #201F1B;
+  border-bottom: 0px solid #EEE;
+  margin: 0px 0px 0px 0px;
+  padding: 22px 5px 10px 15px;
+  vertical-align: baseline;
+
+  div.user-notification {
+    display: block;
+    margin: 8px 0px 0 20px;
+    float: left;
+  }
+
+}
+
+@media #{$media_query_phone} {
+  ul.user-notification {
+    display: none !important;
+  }
+
+  div.panel-extra {
+    display: none !important;
+  }
+}
+
+@media #{$media_query_desktop} {
+  ul.user-notification {
+    //    display: none !important;
+  }
+}

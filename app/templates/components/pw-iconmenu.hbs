@@ -1,0 +1,16 @@
+<a href="javascript:void(0)" class="iconmenu-button">
+  {{fa-icon iconName title=title class="fa-fw"}}
+    <span class="badge {{badgeType}}">
+      {{arr-count items}}
+    </span>
+</a>
+<div class="iconmenu-list">
+    <p class="title">
+        You have {{arr-count items}} notifications.
+    </p>
+    <ul>
+      {{#each items as |data| }}
+        {{component itemComponent data=data onItemClick=(action "itemClick") }}
+      {{/each}}
+    </ul>
+</div>

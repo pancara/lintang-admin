@@ -1,0 +1,130 @@
+@mixin label-variant($color) {
+  background-color: $color;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken($color, 10%);
+    }
+  }
+}
+
+.pw-label {
+  display: inline;
+  padding: 4px 6px 4px 6px;
+  font-size: 10px;
+  //  font-weight: bold;
+  line-height: 1;
+  color: $pw_label_color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+
+  &:empty {
+    display: none;
+  }
+
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+
+  &.pw-label-sm {
+    font-size: 100%;
+    line-height: 1.25;
+  }
+
+  &.pw-label-md {
+    font-size: 120%;
+    line-height: 1.5;
+    border-radius: .5em;
+  }
+
+  &.pw-label-lg {
+    font-size: 150%;
+    line-height: 2;
+    border-radius: .5em;
+  }
+
+  &.pw-label-block {
+    display: block;
+    margin-top: 4px;
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+// Add hover effects, but only for links
+a {
+  .pw-label {
+    &:hover,
+    &:focus {
+      color: $pw_label_link_hover_color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
+
+// Colors
+// Contextual variations (linked labels get darker on :hover)
+
+.pw-label-default {
+  @include label-variant($pw_label_default_bg);
+}
+
+.pw-label-primary {
+  @include label-variant($pw_label_primary_bg);
+}
+
+.pw-label-success {
+  @include label-variant($pw_label_success_bg);
+}
+
+.pw-label-info {
+  @include label-variant($pw_label_info_bg);
+}
+
+.pw-label-warning {
+  @include label-variant($pw_label_warning_bg);
+}
+
+.pw-label-danger {
+  @include label-variant($pw_label_danger_bg);
+}
+
+.pw-label-danger {
+  @include label-variant($pw_label_danger_bg);
+}
+
+.pw-label-blue {
+  @include label-variant(#0073b7);
+}
+
+.pw-label-orange {
+  @include label-variant(#ffa812);
+}
+
+.pw-label-aqua {
+  @include label-variant(#00c0ef);
+}
+
+.pw-label-aqua {
+  @include label-variant(#00b29e);
+}
+
+.pw-label-cyan {
+  @include label-variant(#00b29e);
+}
+
+.pw-label-purple {
+  @include label-variant(#ba79cb);
+}
+
+.pw-label-amethyst {
+  @include label-variant(#5a3a68);
+}
+
+

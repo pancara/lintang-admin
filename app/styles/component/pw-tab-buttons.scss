@@ -1,0 +1,54 @@
+.pw-tab-buttons {
+  margin: 16px 0 0 0;
+  padding: 0 0 0 0;
+  width: 100%;
+//  height: auto;
+  //  background: #E7E0CD;
+  display: block;
+  height: 30px;
+  border-bottom: 1px solid tint(#B6A67D, 80);
+  text-align: left;
+  div.pw-tab-button {
+    padding: 0 0 0 0;
+    list-style: none;
+    background: tint(#B6A67D, 90);
+
+    cursor: pointer;
+    display: inline-block;
+    margin: 0px 4px 0px 8px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    border: 1px solid tint(#B6A67D, 80);
+    border-bottom: none;
+
+    @include transition(background 300ms ease-in-out);
+
+    &:nth-last-child(2) {
+      &:after {
+        clear: both;
+      }
+    }
+
+    &.active {
+      background: #FFF;
+      @include transition(background 200ms ease-in-out);
+      a {
+        font-weight: bold;
+        padding: 7px 24px 4px 24px;
+      }
+    }
+
+    a {
+      color: #A89342;
+      text-decoration: none;
+      padding: 7px 24px 3px 24px;
+      display: block;
+      font-size: 13px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+
+  }
+}

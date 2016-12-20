@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+          {{#if error}}
+              <div class="alert alert-danger" role="alert">
+                {{errorMessage}}
+              </div>
+          {{/if}}
+
+          {{#if success}}
+              <div class="alert alert-success" role="alert">
+                {{errorMessage}}
+              </div>
+          {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Type</span>
+        </div>
+        <div class="col-lg-2">
+            <span class="value">{{config.type}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Value</span></div>
+        <div class="col-lg-5">
+          {{input class="form-control" value=value}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-2">
+            <button class="btn btn-success btn-sm" {{action "save"}}>
+              {{fa-icon "check"}} &nbsp; Save
+            </button>
+            <button class="btn btn-danger btn-sm" {{action "cancel"}}>
+              {{fa-icon "remove"}} &nbsp; Cancel
+            </button>
+        </div>
+    </div>
+</div>

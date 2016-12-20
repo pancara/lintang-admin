@@ -1,0 +1,43 @@
+{{#if (lt current 2)}}
+    <button class="btn btn-xs" disabled>
+        &nbsp;{{fa-icon "angle-double-left"}}&nbsp;
+    </button>
+    <button class="btn btn-xs" disabled>
+        &nbsp;{{fa-icon "angle-left"}}&nbsp;
+    </button>
+{{else}}
+    <button class="btn btn-xs" {{action "go" "first"}}>
+        &nbsp;{{fa-icon "angle-double-left"}}&nbsp;
+    </button>
+    <button class="btn btn-xs" {{action "go" "previous"}}>
+        &nbsp;{{fa-icon "angle-left"}}&nbsp;
+    </button>
+{{/if}}
+
+&nbsp;
+
+<button class="btn btn-xs" {{action "refresh"}}>
+  {{current}}&nbsp;/&nbsp;{{pageCount}}
+</button>
+&nbsp;
+
+{{#if (eq current pageCount)}}
+    <button class="btn btn-xs" disabled>
+        &nbsp;{{fa-icon "angle-right"}}&nbsp;
+    </button>
+    <button class="btn btn-xs" disabled>
+        &nbsp;{{fa-icon "angle-double-right"}}&nbsp;
+    </button>
+{{else}}
+    <button class="btn btn-xs" {{action "go" "next"}}>
+        &nbsp;{{fa-icon "angle-right"}}&nbsp;
+    </button>
+    <button class="btn btn-xs" {{action "go" "last"}}>
+        &nbsp;{{fa-icon "angle-double-right"}}&nbsp;
+    </button>
+{{/if}}
+
+
+
+
+

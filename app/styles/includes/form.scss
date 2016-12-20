@@ -1,0 +1,30 @@
+span.field {
+  font-size: 13px;
+  line-height: 24px;
+  color: #888;
+}
+
+span.field-group {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #888;
+  text-decoration: underline;
+}
+
+span.value {
+  font-size: 13px;
+  line-height: 24px;
+  color: #555;
+}
+
+p.description {
+  font-size: 13px;
+  color: #444;
+  &.error {
+    color: #CC0000;
+  }
+  &.success {
+    color: #156111;
+  }
+}

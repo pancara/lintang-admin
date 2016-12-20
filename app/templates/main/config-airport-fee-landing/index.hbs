@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pw-panel pw-panel-align-right">
+                <button class="btn btn-success btn-xs pull-left" {{action "add"}}>
+                  {{fa-icon "plus"}}&nbsp;
+                    Add
+                </button>
+
+                <button class="btn btn-xs" {{action "toggleFilter"}}>
+                  {{#if shownFilter }}
+                      Hide Filter &nbsp;
+                    {{fa-icon "caret-up"}}
+                  {{else}}
+                      Show Filter &nbsp;
+                    {{fa-icon "caret-down"}}
+                  {{/if}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-config-airport-fee-landing-filter
+          register-as=filterConfigAirportFee
+          shown=shownFilter
+          isZebra=true
+          applyFilter=(action "applyFilter")
+          }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-table data=data
+          headerTemplate="main/config-airport-fee-landing/header"
+          footerTemplate="main/config-airport-fee-landing/footer"
+          masterTemplate="main/config-airport-fee-landing/row"
+          detailTemplate="main/config-airport-fee-landing/row-detail"
+          isZebra=false
+          edit=(action "edit")
+          }}
+
+          {{pw-paging register-as=paging refresh=(action "refresh")}}
+        </div>
+    </div>
+</div>
+

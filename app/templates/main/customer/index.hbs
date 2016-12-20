@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pw-panel pw-panel-align-right">
+                <button class="btn btn-xs" {{action "toggleFilter"}}>
+                  {{#if shownFilter }}
+                      Hide Filter &nbsp;
+                    {{fa-icon "caret-up"}}
+                  {{else}}
+                      Show Filter &nbsp;
+                    {{fa-icon "caret-down"}}
+                  {{/if}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-customer-filter
+          register-as=filterCustomer
+          shown=shownFilter
+          isZebra=true
+          applyFilter=(action "applyFilter")
+          }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-table data=data
+          headerTemplate="main/customer/header"
+          footerTemplate="main/customer/footer"
+          masterTemplate="main/customer/row"
+          detailTemplate="main/customer/row-detail"
+          isZebra=false
+          isBordered=true
+          setStatus=(action "setStatus")
+          }}
+
+          {{pw-paging register-as=paging refresh=(action "refresh")}}
+        </div>
+    </div>
+</div>
+

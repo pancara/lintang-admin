@@ -1,0 +1,68 @@
+<div class="panel-heading">
+    <span>
+        {{fa-icon "filter"}} &nbsp; Filter
+    </span>
+</div>
+<div class="panel-body">
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">User Name</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=userName}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Customer Name</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=customerName}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Phone Number</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=phone}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+             <span class="field">
+              Registration Status
+             </span>
+        </div>
+        <div class="col-lg-2">
+          {{pw-switch checked=active}}
+            <span class="field">
+              {{if active "Active" "Inactive"}}
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Customer Status</span>
+        </div>
+        <div class="col-lg-3">
+          {{pw-switch checked=blocked}}
+            <span class="field">
+              {{if blocked "Blocked" "Unblocked"}}
+            </span>
+        </div>
+    </div>
+
+
+    <div class="row" style="padding: 0 0 0 0;">
+        <div class="col-lg-6 col-lg-offset-2">
+            <button class="btn btn-primary btn-sm"{{action 'applyFilter'}}>{{fa-icon "filter"}} &nbsp; Apply
+                Filter
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{{pw-table-row-master
+  data=data
+  index=index
+  template=masterTemplate
+  detailVisible=detailVisible
+  onToggleDetail=(action "toggleDetail")
+  onActionTriggered=(action "triggerAction")
+}}
+
+{{#if detailVisible}}
+  {{pw-table-row-detail
+    data=data
+    template=detailTemplate
+    onToggleDetail=(action "toggleDetail")
+    onActionTriggered=(action "triggerAction")
+  }}
+{{/if}}

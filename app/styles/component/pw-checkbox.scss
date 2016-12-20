@@ -1,0 +1,32 @@
+$control_width: 20px;
+$control_height: 20px;
+
+.pw-checkbox {
+  padding: 0 0 0 0;
+  display: inline-block;
+  width: $control_width;
+  height: $control_height;
+  outline: none;
+  border-radius: 5px;
+  background: #1A1A1A;
+  border: none;
+  overflow: visible;
+  font-size: 15px;
+  i {
+    padding: 0 0 0 0;
+    margin-top: -4px;
+    line-height: 28px;
+    font-size: 15px;
+  }
+
+  &.checked {
+    i {
+      color: #1d8918;
+    }
+  }
+
+  &:hover {
+    background: #272727;
+  }
+
+}

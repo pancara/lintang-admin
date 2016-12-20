@@ -1,0 +1,72 @@
+<div class="panel-heading">
+    <span>
+        {{fa-icon "filter"}} &nbsp; Filter
+    </span>
+</div>
+<div class="panel-body">
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">User Name</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=username}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Name</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=name}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Role</span>
+        </div>
+        <div class="col-lg-2">
+
+            <select class="form-control" onchange={{action "selectOperatorRole" value="target.value"}}>
+                <option>-</option>
+              {{#each operatorRoles as |roleOption|}}
+                  <option value={{roleOption}}>{{roleOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+             <span class="field">Active</span>
+        </div>
+        <div class="col-lg-2">
+          {{pw-switch checked=isActive}}
+            <span class="field">
+              {{if isActive "Active" "Inactive"}}
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Blocked</span>
+        </div>
+        <div class="col-lg-3">
+          {{pw-switch checked=isBlocked}}
+            <span class="field">
+              {{if isBlocked "Blocked" "Unblocked"}}
+            </span>
+        </div>
+    </div>
+
+
+    <div class="row" style="padding: 0 0 0 0;">
+        <div class="col-lg-6 col-lg-offset-2">
+            <button class="btn btn-primary btn-sm"{{action 'applyFilter'}}>{{fa-icon "filter"}} &nbsp; Apply
+                Filter
+            </button>
+        </div>
+    </div>
+</div>

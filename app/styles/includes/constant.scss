@@ -1,0 +1,35 @@
+// responsive screen size
+$media_query_phone: "only screen and (max-width : 100px)";
+//$media_query_phone: "only screen and (max-width : 768px)";
+$media_query_desktop: "only screen and (min-width : 769px)";
+
+// body
+$body_background_color: #FEFEFE;
+;
+
+//component
+$component_shadow_focused: transparentize(#666, 0.9);
+
+// color
+$base_color: #575033;
+$text_color: #93751C;
+
+$pw_gray_light: #999;
+
+$pw_brand_primary: darken(#428bca, 6.5%) !default;
+// #337ab7
+$pw_brand_success: #5cb85c !default;
+$pw_brand_info: #5bc0de !default;
+$pw_brand_warning: #f0ad4e !default;
+$pw_brand_danger: #d9534f !default;
+
+// pw-label
+$pw_label_default_bg: $pw_gray_light !default;
+$pw_label_primary_bg: $pw_brand_primary !default;
+$pw_label_success_bg: $pw_brand_success !default;
+$pw_label_info_bg: $pw_brand_info !default;
+$pw_label_warning_bg: $pw_brand_warning !default;
+$pw_label_danger_bg: $pw_brand_danger !default;
+
+$pw_label_color: #fff !default;
+$pw_label_link_hover_color: #fff !default;

@@ -1,0 +1,119 @@
+table.aircraft-list {
+
+  td {
+  }
+
+  .aircraft-pic {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .aircraft-info {
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+      color: $text-color;
+    }
+    label {
+      color: #666;
+      font-weight: normal;
+      font-size: 13px;
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+      display: block;
+    }
+    p {
+      font-size: 16px;
+      color: $text-color;
+    }
+  }
+
+  .aircraft-status {
+    padding-top: 16px;
+    padding-left: 16px;
+    text-align: center;
+    label {
+      color: #555;
+      font-weight: normal;
+      font-size: 13px;
+    }
+    button {
+      @include linear-gradient(to top, darken(#AE9A65, 15), #AE9A65);
+      font-family: "Gotham Pro";
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 24px;
+      padding: 8px 24px 6px 24px;
+      text-align: center;
+      outline: none;
+      color: darken($pw-button-bg-color, 25);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0px 1px 1px #999;
+      margin: 8px 8px 8px 8px;
+
+      &:hover {
+        @include linear-gradient(to top, darken(#CEC099, 15), #CEC099);
+        color: darken($base_color, 5);
+      }
+
+      &:focus {
+        @include linear-gradient(to top, darken(#CEC099, 10), #CEC099);
+        color: darken($base_color, 10);
+      }
+    }
+  }
+}
+
+table.aircraft-detail {
+//  background: #FBF8EF;
+  margin-top: 16px;
+  width: 100%;
+  border-collapse: collapse;
+  td {
+    padding: 10px 16px 10px 32px;
+    border-bottom: 1px solid #FBF8EF;
+    vertical-align: top;
+
+    &.field {
+      font-size: 13px;
+      color: #666;
+
+      &.images {
+//        background: #E7E0CD;
+      }
+    }
+    &.value {
+      font-size: 16px;
+      color: $text-color;
+      &.images {
+//        background: #E7E0CD;
+      }
+
+      img {
+        max-width: 240px;
+        margin-left: 20px;
+        &:first-child {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+}
+
+.aircraft-availability-panel {
+  background: #CEBF94;
+  font-family: "Gotham Pro";
+  div {
+    text-align: center;
+    padding: 16px 16px 12px 16px;
+    vertical-align: middle;
+    color: #94770C;
+    span.title {
+      color: darken(#94770C, 10);
+      font-size: 18px;
+    }
+  }
+}

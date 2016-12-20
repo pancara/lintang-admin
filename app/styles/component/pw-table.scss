@@ -1,0 +1,99 @@
+$pw_table_row_head_bg: lighten(#999, 35);
+$pw_table_row_bg: #FFF;
+$pw_table_row_bg_hover: tint(#a0dffc, 80);
+$pw_table_border_color: rgba(220, 220, 220, 0.3);
+
+table.pw-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 4px;
+  //  font-family: "Gotham Pro";
+  // Cells
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: 8px;
+        line-height: $line-height-base;
+        vertical-align: top;
+      }
+    }
+  }
+  thead {
+    th {
+      font-size: 12px;
+      color: #777;
+      font-weight: normal;
+      background: $pw_table_row_head_bg;
+      &.pw-number {
+        text-align: right;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        font-size: 12px;
+        color: #888;
+        @include transition(background 500ms ease-out);
+        &.pw-number {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  &.pw-highlighted {
+    tbody {
+      tr {
+        &:hover {
+          td {
+            background: $pw_table_row_bg_hover;
+            @include transition(background 200ms ease-in-out);
+          }
+        }
+      }
+    }
+  }
+
+  &.pw-bordered {
+    thead {
+      th {
+        border-bottom: 1px solid $pw_table_border_color !important;
+      }
+    }
+    tbody {
+      tr {
+        td {
+          border-bottom: 1px solid $pw_table_border_color !important;
+        }
+      }
+    }
+  }
+
+  &.pw-zebra {
+    tbody {
+      tr:nth-child(even) {
+        td {
+          background: tint($pw_table_row_head_bg, 40);
+          @include transition(background 500ms ease-out);
+        }
+      }
+    }
+
+    &.pw-highlighted {
+      tbody {
+        tr {
+          &:hover {
+            td {
+              background: $pw_table_row_bg_hover;
+              @include transition(background 200ms ease-in-out);
+            }
+          }
+        }
+      }
+    }
+  }
+}

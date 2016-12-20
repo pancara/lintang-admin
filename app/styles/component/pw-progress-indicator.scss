@@ -1,0 +1,40 @@
+div.pw-progress-indicator {
+  background: #ff7f16;
+  display: block;
+  height: 0px;
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 999999;
+  text-align: center;
+
+  &.shown {
+    height: 3px;
+    > div {
+      display: block;
+      @include animation(indicator 1000ms infinite);
+    }
+  }
+
+  > div {
+    background: #4640ff;
+    height: 3px;
+    width: 100%;
+    display: none;
+    position: absolute;
+  }
+
+}
+
+@include keyframes(indicator) {
+  0% {
+    width: 0%;
+    left: 50%;
+  }
+
+  100% {
+    left: 0%;
+    width: 100%;
+  }
+}

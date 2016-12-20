@@ -4,6 +4,14 @@
     "ember": "~2.5.0",
     "ember-cli-shims": "0.1.1",
     "ember-cli-test-loader": "0.2.2",
-    "ember-qunit-notifications": "0.1.0"
+    "ember-qunit-notifications": "0.1.0",
+    "bourbon": "4.2.6",
+    "font-awesome": "~4.5.0",
+    "jquery.nicescroll": "^3.6.8",
+    "randomcolor": "^0.4.4",
+    "bootstrap-datepicker": "^1.6.4",
+    "pw-bootstrap-timepicker": "0.5.3",
+    "js-sha256": "^0.3.2",
+    "crypto-js": "^3.1.8"
   }
 }

@@ -1,0 +1,76 @@
+{{pw-page-title title="User Profile" icon="user"}}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">User Name</span></div>
+        <div class="col-lg-5">
+            <span class="value">{{profile.userName}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">First Name</span>
+        </div>
+        <div class="col-lg-5">
+          {{#if editMode}}
+            {{input class="form-control" value=formData.firstName}}
+          {{else}}
+              <span class="value">{{profile.firstName}}</span>
+          {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Last Name</span></div>
+        <div class="col-lg-5">
+          {{#if editMode}}
+            {{input class="form-control" value=formData.lastName}}
+          {{else}}
+              <span class="value">{{profile.lastName}}</span>
+          {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Gender</span></div>
+        <div class="col-lg-2">
+          {{#if editMode}}
+              <select class="form-control"
+                      onchange={{action "selectGender" value="target.value"}}>
+                {{#each genderList as |gender|}}
+                  {{#if (eq formData.gender gender)}}
+                      <option value="{{gender}}" selected>{{gender}}</option>
+                  {{else}}
+                      <option value="{{gender}}">{{gender}}</option>
+                  {{/if}}
+                {{/each}}
+              </select>
+
+          {{else}}
+              <span class="value">{{profile.gender}}</span>
+          {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-2">
+          {{#if editMode}}
+              <button class="btn btn-success btn-sm" {{action "save"}}>
+                {{fa-icon "check"}} &nbsp; Save
+              </button>
+              &nbsp;
+              <button class="btn btn-warning btn-sm" {{action "cancel"}}>
+                {{fa-icon "remove"}} &nbsp; Cancel
+              </button>
+          {{else}}
+              <button class="btn btn-primary btn-sm" {{action "edit"}}>
+                {{fa-icon "pencil"}} &nbsp; Edit
+              </button>
+          {{/if}}
+        </div>
+    </div>
+
+</div>
+

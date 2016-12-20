@@ -1,0 +1,43 @@
+<td colspan="2" style="background: #EEE;"></td>
+<td colspan="6">
+    <table class="pw-table pw-bordered">
+        <tbody>
+        <tr>
+            <td><span class="field">Description :</span></td>
+            <td>
+              {{data.description}}
+            </td>
+        </tr>
+        <tr>
+            <td>Contact Name :</td>
+            <td>
+              {{data.contactName}}
+            </td>
+        </tr>
+        <tr>
+            <td>Contact Phone :</td>
+            <td>{{data.contactPhone}}</td>
+        </tr>
+        <tr>
+            <td>Contact Email :</td>
+            <td>
+              {{data.contactMail}}
+            </td>
+        </tr>
+        <tr>
+            <td>Bank Acount :</td>
+            <td>
+              {{data.bankInfo.account}} &nbsp; &nbsp; {{data.bankInfo.name}}<br/>
+              {{data.bankInfo.branch}}<br/>
+              {{data.bankInfo.bank.code}} {{data.bankInfo.bank.name}}
+            </td>
+        </tr>
+        <tr>
+            <td>Fee :</td>
+            <td>
+              {{data.fee}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</td>

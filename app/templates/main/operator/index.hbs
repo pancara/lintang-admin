@@ -1,0 +1,50 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pw-panel pw-panel-align-right">
+                <button class="btn btn-success btn-xs pull-left" {{action "add"}}>
+                  {{fa-icon "plus"}}&nbsp;
+                    Add
+                </button>
+                <button class="btn btn-xs" {{action "toggleFilter"}}>
+                  {{#if shownFilter }}
+                      Hide Filter &nbsp;
+                    {{fa-icon "caret-up"}}
+                  {{else}}
+                      Show Filter &nbsp;
+                    {{fa-icon "caret-down"}}
+                  {{/if}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-operator-filter
+          register-as=filterOperator
+          shown=shownFilter
+          applyFilter=(action "applyFilter")
+          }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-table data=data
+          headerTemplate="main/operator/header"
+          footerTemplate="main/operator/footer"
+          masterTemplate="main/operator/row"
+          detailTemplate="main/operator/row-detail"
+          isZebra=false
+          isBordered =true
+          changeStatus=(action "changeStatus")
+          changeFee=(action "changeFee")
+          }}
+
+          {{pw-paging register-as=paging refresh=(action "refresh")}}
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+.pw-message {
+  z-index: 100000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: auto;
+  display: inline-block;
+  background: #FFF;
+  padding: 4px 8px 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  background: #B52521;
+  margin-top: 4px;
+  span {
+    font-size: 12px;
+    color: #FFF;
+  }
+}

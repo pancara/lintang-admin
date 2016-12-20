@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            {{outlet}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-table data=data
+          headerTemplate="main/config-default/header"
+          footerTemplate="main/config-default/footer"
+          masterTemplate="main/config-default/row"
+          detailTemplate="main/config-default/row-detail"
+          isZebra=false
+          changeValue=(action "changeValue")
+          }}
+
+          {{pw-paging register-as=paging refresh=(action "refresh")}}
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,119 @@
+$profile_menu_color: lighten($base_color, 35);
+.page-header {
+  div.profile {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    outline: none;
+    div.info {
+      float: left;
+      h1 {
+        font-size: 18px;
+        line-height: 28px;
+        margin: 0 0 0 0;
+        color: lighten($base_color, 5);
+        font-family: "Gotham Pro Medium";
+      }
+
+      h2 {
+        font-family: "Gotham Pro Medium";
+        font-size: 13px;
+        line-height: 20px;
+        margin: 0 0 0 0;
+        color: $base_color;
+      }
+    }
+    a.avatar {
+      display: block;
+      list-style: none;
+      margin: 0 16px 0 0;
+      padding: 0 0px 0 15px;
+      float: right;
+      opacity: 0.9;
+      img.photo {
+        padding: 5px;
+        @include transition(all 0.2s ease-out);
+        border-radius: 30px;
+        max-width: 60px;
+        max-height: 60px;
+        float: left;
+        margin-top: -8px;
+        background: rgba(255, 255, 255, 1.0);
+      }
+      img.tick {
+        float: left;
+        width: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        opacity: 0.6;
+        &:hover {
+          opacity: 1.0;
+        }
+      }
+      &:hover {
+        opacity: 1.0;
+      }
+    }
+
+    ul.profile-menu {
+      z-index: 1000;
+      display: none;
+      position: absolute;
+      background: $profile_menu_color;
+      margin-top: 45px;
+      right: 20px;
+      padding: 2px 0px 2px 0px;
+      @include filter(drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.4)));
+      li {
+        list-style: none;
+        text-align: left;
+        padding: 0 0;
+        margin: 0 0;
+        display: block;
+        border-bottom: 1px solid darken($profile_menu_color, 5);
+        cursor: default;
+
+        &:last-child {
+          //          border-bottom: none;
+        }
+        a {
+          display: block;
+          padding: 6px 16px 6px 16px;
+          text-decoration: none;
+          font-size: 13px;
+          background: $profile_menu_color;
+          color: #FFF;
+          @include transition(background 400ms ease-in-out);
+          color: darken($profile_menu_color, 40);
+          span {
+            margin-left: 16px;
+
+          }
+          &:hover {
+            background: lighten($profile_menu_color, 5);
+            @include transition(background 200ms ease-in-out);
+          }
+        }
+      }
+
+      &:before {
+        content: "";
+        background: transparent;
+        width: 0px;
+        height: 0px;
+        border-bottom: 8px solid $profile_menu_color;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        display: block;
+        margin-top: -10px;
+        margin-right: 5px;
+        float: right;
+      }
+    }
+    &.shown-menu {
+      ul.profile-menu {
+        display: inline-block;
+      }
+    }
+  }
+}
