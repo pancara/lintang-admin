@@ -24,9 +24,11 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  app.import(app.bowerDirectory + '/jquery.nicescroll/dist/jquery.nicescroll.min.js');
-  app.import(app.bowerDirectory + '/jquery.easing/js/jquery.easing.compatibility.js');
+  app.import(app.bowerDirectory + '/pw-bootstrap-timepicker/css/timepicker.css');
 
+  app.import(app.bowerDirectory + '/jquery.nicescroll/dist/jquery.nicescroll.min.js');
+
+  app.import(app.bowerDirectory + '/jquery.easing/js/jquery.easing.compatibility.js');
   app.import(app.bowerDirectory + '/bootstrap-datepicker/dist/js/bootstrap-datepicker.js');
   app.import(app.bowerDirectory + '/pw-bootstrap-timepicker/js/bootstrap-timepicker.js');
   app.import(app.bowerDirectory + '/js-sha256/build/sha256.min.js');

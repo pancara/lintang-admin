@@ -1,0 +1,58 @@
+<div class="panel-heading">
+    <span>
+        {{fa-icon "filter"}} &nbsp; Filter
+    </span>
+</div>
+<div class="panel-body">
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Code</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=code}}
+        </div>
+
+        <div class="col-lg-2">
+            <span class="field">Model</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=model}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Max Passengers</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=maxPassengers}}
+        </div>
+
+        <div class="col-lg-2">
+            <span class="field">Year of Make</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=yearOfMake}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Status</span>
+        </div>
+        <div class="col-lg-3">
+          {{pw-switch checked=status}}
+            <span class="field">
+              {{if status "Active" "Inactive"}}
+            </span>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 0 0 0 0;">
+        <div class="col-lg-6 col-lg-offset-2">
+            <button class="btn btn-primary btn-sm"{{action 'applyFilter'}}>{{fa-icon "filter"}} &nbsp; Apply
+                Filter
+            </button>
+        </div>
+    </div>
+</div>

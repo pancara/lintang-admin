@@ -3,4 +3,8 @@
 {{/if}}
 &nbsp;
 {{yield}}
-<span>{{title}}</span>
+<span class="title">{{title}}</span>
+{{#if subtitle}}
+    |
+    <span class="subtitle">{{subtitle}}</span>
+{{/if}}

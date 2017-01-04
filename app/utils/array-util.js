@@ -1,6 +1,16 @@
 import Ember from 'ember';
 
-export default Ember.Object.extend({
+export default {
+
+  removeObject(arr, obj) {
+    var dest = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] !== obj) {
+        dest.push(arr[i]);
+      }
+    }
+    return dest
+  },
 
   moveItem(source, dest, option, resultSource, resultDest) {
     for (var i = 0; i < source.length; i++) {
@@ -29,4 +39,4 @@ export default Ember.Object.extend({
     }
   }
 
-});
+};

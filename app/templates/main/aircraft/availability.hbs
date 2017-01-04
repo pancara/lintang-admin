@@ -1,0 +1,77 @@
+{{pw-page-title title="Aircraft" subtitle="Availability" icon="plane"}}
+<div class="container-fluid">
+  {{partial "main/aircraft/aircraft-detail"}}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="pw-table pw-bordered">
+                <thead>
+                <tr>
+                    <th colspan="6">List of Bookings</th>
+                </tr>
+                <tr>
+                    <th style="width: 10px;"></th>
+                    <th style="width: 320px;">Booking Date</th>
+                    <th style="width: 100px;">Reason</th>
+                    <th>Description</th>
+                    <th style="width: 10px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each specialPriceList as |specialPrice index |}}
+                    <tr>
+                        <td>{{ add index 1 }}.</td>
+                        <td>{{specialPrice.date}}</td>
+                        <td>{{specialPrice.percentageOfPrice}} %</td>
+                        <td>{{specialPrice.description}}</td>
+                        <td>
+                            <button class="btn btn-warning btn-xs" {{action "editSpecialPrice" amenity}}>edit</button>
+                            <button class="btn btn-danger btn-xs" {{action "deleteSpecialPrice" amenity}}>delete</button>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  {{#if editMode}}
+      <div class="panel panel-default">
+          <div class="panel-body">
+              <div class="row">
+                  <div class="col-lg-2"><span class="field">Booking Date Time :</span></div>
+                  <div class="col-lg-2">{{pw-datepicker value=bookingDate}}</div>
+                  <div class="col-lg-2">{{pw-timepicker value=bookingDate}}</div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-2"><span class="field">Reason :</span></div>
+                  <div class="col-lg-4">
+                      <select class="form-control" onchange={{action "selectBookingReason" value="target.value"}}>
+                          <option>-</option>
+                        {{#each bookingReasons as |reasonOption|}}
+                            <option value={{reasonOption}} selected={{eq reason reasonOption}}>{{reasonOption}}</option>
+                        {{/each}}
+                      </select>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-2"><span class="field">Description :</span></div>
+                  <div class="col-lg-5">{{textarea class="form-control" value=description }}</div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-4 col-lg-offset-2">
+                      <button class="btn btn-success btn-sm" {{action "saveData"}}>&nbsp;Save&nbsp;</button>
+                      <button class="btn btn-danger btn-sm" {{action "cancelData"}}>Cancel</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {{else}}
+      <div class="row">
+          <div class="col-lg-12">
+              <button class="btn btn-success btn-xs" {{action "addBooking"}}>{{fa-icon "plus"}} Add</button>
+          </div>
+      </div>
+  {{/if}}
+
+</div>

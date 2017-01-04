@@ -27,6 +27,7 @@ table.pw-table {
       color: #777;
       font-weight: normal;
       background: $pw_table_row_head_bg;
+      border-left: 1px solid #FFF;
       &.pw-number {
         text-align: right;
       }
@@ -61,7 +62,7 @@ table.pw-table {
   &.pw-bordered {
     thead {
       th {
-        border-bottom: 1px solid $pw_table_border_color !important;
+        border-bottom: 1px solid #FFF !important;
       }
     }
     tbody {

@@ -1,0 +1,25 @@
+<td>{{index}}.</td>
+<td>
+    <button class="btn btn-xs" {{action "toggleDetail"}}>
+      {{#unless detailVisible }}
+        {{fa-icon "plus" }}
+      {{/unless}}
+      {{#if detailVisible }}
+        {{fa-icon "minus" }}
+      {{/if}}
+    </button>
+</td>
+<td>
+  {{#if (eq data.status "ACTIVE")}}
+      <span class="pw-label pw-label-success pw-label-xs">A</span>
+  {{else}}
+      <span class="pw-label pw-label-danger pw-label-xs">I&nbsp;</span>
+  {{/if}}
+</td>
+<td>{{data.name}}</td>
+<td>{{data.description}}</td>
+<td>
+    <button class="btn btn-success btn-xs" {{action "click"  "addAmenity" data}}>
+        add
+    </button>
+</td>

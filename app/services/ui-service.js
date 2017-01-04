@@ -50,17 +50,26 @@ export default Ember.Service.extend({
     return result;
   },
 
-  showMessage(message, pTimeout) {
+  showMessage(message, pTimeout, type) {
 
     var messageBoxes = this.get('messageBoxes');
 
     // calc new message box position
     var top = 0;
     for (let m of messageBoxes) {
-      top += Ember.$(m).outerHeight();
+      top += Ember.$(m).outerHeight() + 2;
     }
 
+
     let msgBox = Ember.$('<div class="pw-message"><span>' + message + '</span></div>');
+
+    if (type === 'success') {
+      msgBox.addClass('pw-message-success');
+    } else if (type === 'error') {
+      msgBox.addClass('pw-message-error');
+    } else if (type === 'warning') {
+      msgBox.addClass('pw-message-warning');
+    }
 
     Ember.$('body').append(msgBox);
     msgBox.css({

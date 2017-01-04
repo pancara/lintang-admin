@@ -8,23 +8,6 @@
       url=(concat "config/amenities/logo/" data.id)
       class="filestyle"
       data-input="false"
-      uploadFileChanged=(action "click" "uploadFileChanged" data)
-      uploadProgress=(action "click" "uploadProgress" data)
-      uploadCompleted=(action "click" "uploadCompleted" data)
-      uploadError=(action "click" "uploadError" data)
       }}
-    </div>
-
-    <div>
-      {{#if uploader.uploading}}
-        <span>
-        {{format-number uploader.percentage precision=0}} %
-        </span>
-      {{/if}}
-      {{#if uploader.error}}
-      <span>
-        Error, uploading file.
-      </span>
-      {{/if}}
     </div>
 </td>

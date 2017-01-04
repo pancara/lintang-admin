@@ -1,0 +1,27 @@
+<table class="pw-table pw-bordered">
+    <thead>
+    <tr>
+        <th colspan="5">
+          Amenities
+        </th>
+    </tr>
+    <tr>
+        <th style="width: 10px;"></th>
+        <th style="width: 10px;"></th>
+        <th style="width: 40px;"></th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each data.amenities as |amenity index |}}
+        <tr>
+            <td>{{ add index 1 }}.</td>
+            <td>{{amenity.status }}.</td>
+            <td>{{amenity.logo}}</td>
+            <td>{{amenity.name}}</td>
+            <td>{{amenity.description}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

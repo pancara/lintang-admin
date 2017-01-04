@@ -1,0 +1,28 @@
+<table class="pw-table pw-bordered">
+    <thead>
+    <tr>
+        <th colspan="4">
+            Images
+        </th>
+    </tr>
+    <tr>
+        <th style="width: 10px;"></th>
+        <th style="width: 40px;"></th>
+        <th>Description</th>
+        <th>Main</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each data.images as |img index|}}
+        <tr>
+            <td>{{add index 1}}.</td>
+            <td>
+              {{pw-image default="images/aircraft.png" source=img.url style="max-width: 200px;"}}
+
+            </td>
+            <td>{{img.description}}</td>
+            <td>{{img.main}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

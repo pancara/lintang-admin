@@ -1,48 +1,86 @@
 <td colspan="2" style="background: #EEE;"></td>
 <td colspan="7">
+    <div style="margin-bottom: 2px; text-align: left;">
+        <button class="btn btn-success btn-xs" {{action "click"  "setupAmenities" data}}>
+          {{fa-icon "wrench"}} &nbsp;
+            Amenities
+        </button>
+
+        <button class="btn btn-success btn-xs" {{action "click"  "setupImages" data}}>
+          {{fa-icon "wrench"}} &nbsp;
+            Images
+        </button>
+
+        <button class="btn btn-success btn-xs" {{action "click"  "setupAvailability" data}}>
+          {{fa-icon "calendar"}} &nbsp;
+            Availability
+        </button>
+
+        <button class="btn btn-success btn-xs" {{action "click"  "setupSpecialPrice" data}}>
+          {{fa-icon "star"}} &nbsp;
+            Special Price
+        </button>
+    </div>
     <table class="pw-table pw-bordered">
         <tbody>
         <tr>
-            <td style="width: 120px;"><span class="field">First Name:</span></td>
+            <td style="width: 120px;"><span class="field">Speed Kts:</span></td>
             <td>
-              {{data.firstName}}
+              {{data.speedKts}}
             </td>
-        </tr>
-        <tr>
-            <td>Last Name :</td>
+            <td>Speed Kmh:</td>
             <td>
-              {{data.lastName}}
+              {{data.speedKmh}}
             </td>
         </tr>
         <tr>
-            <td>Gender :</td>
-            <td>{{data.gender}}</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button class="btn btn-primary btn-xs" {{action "click"  "updateProfile" data}}>
-                  {{fa-icon "pencil"}}
-                    Update Profile
-                </button>
-
-                <button class="btn btn-warning btn-xs" {{action "click"  "updateRole" data}}>
-                  {{fa-icon "pencil"}}
-                    Set Role
-                </button>
-
-                &nbsp;
-
-                <button class="btn btn-danger btn-xs" {{action "click"  "blockUser" data}}>
-                    {{fa-icon "stop"}}
-                    {{if data.isBlocked "Unblock" "Block"}}
-                </button>
-
-                <button class="btn btn-danger btn-xs" {{action "click"  "deleteUser" data}}>
-                  {{fa-icon "remove"}}
-                    Remove
-                </button>
+            <td style="width: 120px;"><span class="field">Max Range Km:</span></td>
+            <td>
+              {{data.maxRangeKm}}
+            </td>
+            <td>Max Range Nm:</td>
+            <td>
+              {{data.maxRangeNm}}
             </td>
         </tr>
+
+        <tr>
+            <td style="width: 120px;"><span class="field">Base Price:</span></td>
+            <td>
+              {{data.basePrice}}
+            </td>
+            <td>Margin Price :</td>
+            <td>
+              {{data.marginPrice}}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width: 120px;"><span class="field">Max Passengers:</span></td>
+            <td>
+              {{data.maxPassengers}}
+            </td>
+            <td>Year Of Make :</td>
+            <td>
+              {{data.yearOfMake}}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width: 120px;"><span class="field">Safety Rating:</span></td>
+            <td>
+              {{data.safetyRating}}
+            </td>
+            <td>Description :</td>
+            <td>
+              {{data.description}}
+            </td>
+        </tr>
+
         </tbody>
     </table>
+  {{partial "main/aircraft/row-detail-amenities-list"}}
+  {{partial "main/aircraft/row-detail-images-list"}}
+
 </td>
+<td style="background: #EEE;"></td>

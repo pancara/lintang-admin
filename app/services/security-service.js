@@ -28,7 +28,10 @@ export default Ember.Service.extend({
 
   getAuthBearer() {
     let accessToken = this.get('storageService').getAccessToken();
-    return (accessToken == null) ? null : 'Bearer ' + accessToken.accessToken;
+    let result = (accessToken == null) ? null : 'Bearer ' + accessToken.accessToken;
+    console.log('aut bearer = ');
+    console.log(result);
+    return result;
   },
 
   saveAccessToken(json) {

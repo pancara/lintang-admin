@@ -1,0 +1,30 @@
+<td colspan="2" style="background: #EEE;"></td>
+<td colspan="2" style="text-align: center;">
+{{pw-image default="images/customer.png" source=data.profilePicture style="width: 60%;"}}
+</td>
+<td colspan="3">
+    <table class="pw-table" style="width: auto;">
+        <tbody>
+        <tr>
+            <td>Identity Number :</td>
+            <td>{{data.identityType}} {{data.identityNumber}} </td>
+        </tr>
+        <tr>
+            <td>Address :</td>
+            <td>
+              {{data.address.name}}<br/>
+              {{data.address.point.city.name}} &nbsp;
+              {{data.address.point.province.name}}<br/>
+              {{data.address.zipCode}}
+            </td>
+        </tr>
+        <tr>
+            <td>Lat/Long :</td>
+            <td>
+              {{data.address.point.latitude}},
+              {{data.address.point.longitude}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</td>

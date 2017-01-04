@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
     },
 
     showMessage() {
-      this.get('ui-service').showMessage('heelo...', 1000);
+      this.get('ui-service').showMessage('heelo...', 1000, 'error');
     }
   }
 });

@@ -1,0 +1,32 @@
+<td>{{index}}.</td>
+<td>
+    <button class="btn btn-xs" {{action "toggleDetail"}}>
+      {{#unless detailVisible }}
+        {{fa-icon "plus" }}
+      {{/unless}}
+      {{#if detailVisible }}
+        {{fa-icon "minus" }}
+      {{/if}}
+    </button>
+</td>
+<td>
+  {{#if (eq data.status "ACTIVE")}}
+      <span class="pw-label pw-label-success pw-label-xs">A</span>
+  {{else}}
+      <span class="pw-label pw-label-danger pw-label-xs">I&nbsp;</span>
+  {{/if}}
+</td>
+
+<td>{{data.pricingName}}</td>
+<td>{{data.pricingLevel}}</td>
+<td>{{data.amountType}}</td>
+<td>{{data.pricingValue}}</td>
+<td>
+    <button class="btn btn-primary btn-xs" {{action "click"  "editPricing" data}}>
+        edit
+    </button>
+
+    <button class="btn btn-danger btn-xs" {{action "click"  "deletePricing" data}}>
+        delete
+    </button>
+</td>

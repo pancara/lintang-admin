@@ -6,6 +6,8 @@ export default Ember.Controller.extend({
   editMode: false,
   formData: Administrator.create(),
   genderList: DataFactory.getGenderList(),
+  securityService: Ember.inject.service('security-service'),
+  requestSender: Ember.inject.service('request-sender'),
 
   actions: {
 
@@ -27,10 +29,10 @@ export default Ember.Controller.extend({
       };
 
       let header = {
-        'Authorization': that.get('security-service').getAuthBearer()
+        'Authorization': that.get('securityService').getAuthBearer()
       };
 
-      this.get('request-sender').ajaxPut('admin/profile', JSON.stringify(params), header).then(function (json) {
+      this.get('requestSender').ajaxPut('admin/profile', JSON.stringify(params), header).then(function (json) {
         that.get('profile').setProperties(that.get('formData'));
         that.set('editMode', false);
       }, function () {

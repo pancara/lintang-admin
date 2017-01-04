@@ -25,14 +25,24 @@ body {
           display: block;
           border-bottom: 1px solid tint(#937B3D, 90%);
           background: #FFF;
-          font-size: 12px;
+          font-size: 15px;
+          color: #BBB;
           //          font-family: "Gotham Pro Medium";
           //          color: tint($base_color, 30%);
+
           span {
             color: tint($base_color, 30%);
             margin-left: 8px;
             font-size: 14px;
             display: inline;
+            margin-right: 12px;
+            &.title {
+              color: #999;
+            }
+
+            &.subtitle {
+              color: #666;
+            }
           }
           > i {
             color: tint($base_color, 30%);

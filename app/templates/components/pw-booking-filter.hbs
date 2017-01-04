@@ -1,0 +1,76 @@
+<div class="panel-heading">
+    <span>
+        {{fa-icon "filter"}} &nbsp; Filter
+    </span>
+</div>
+
+<div class="panel-body">
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Order Number</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=orderNumber}}
+        </div>
+
+        <div class="col-lg-1" style="text-align: right;">
+            <span class="field">Status</span>
+        </div>
+        <div class="col-lg-2">
+            <select class="form-control" onchange={{action "selectBookingStatus" value="target.value"}}>
+                <option value="">-</option>
+              {{#each bookingStatuses as |bookingStatusOption|}}
+                  <option value={{bookingStatusOption}} selected={{eq bookingStatusOption bookingStatus}}>{{bookingStatusOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+
+        <div class="col-lg-2" style="text-align: right;">
+            <span class="field">Order Type</span>
+        </div>
+        <div class="col-lg-2">
+            <select class="form-control" onchange={{action "selectOrderType" value="target.value"}}>
+                <option value="">-</option>
+              {{#each orderTypes as |orderTypeOption|}}
+                  <option value={{orderTypeOption}} selected={{eq orderTypeOption orderType}}>{{orderTypeOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Customer</span>
+            <button class="btn btn-xs pull-right" {{action "clearCustomer"}}>clear</button>
+        </div>
+        <div class="col-lg-10">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+             <span class="field">Aircraft</span>
+            <button class="btn btn-xs pull-right" {{action "clearAircraft"}}>clear</button>
+        </div>
+        <div class="col-lg-10">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+             <span class="field">Operator</span>
+            <button class="btn btn-xs pull-right" {{action "clearOperator"}}>clear</button>
+        </div>
+        <div class="col-lg-10">
+        </div>
+    </div>
+
+
+    <div class="row" style="padding: 0 0 0 0;">
+        <div class="col-lg-6 col-lg-offset-2">
+            <button class="btn btn-primary btn-sm"{{action 'applyFilter'}}>{{fa-icon "filter"}} &nbsp; Apply
+                Filter
+            </button>
+        </div>
+    </div>
+</div>

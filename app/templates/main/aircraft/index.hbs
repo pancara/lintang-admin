@@ -1,5 +1,5 @@
+{{pw-page-title title="Aircraft" icon="plane"}}
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-lg-12">
             <div class="pw-panel pw-panel-align-right">
@@ -22,10 +22,9 @@
 
     <div class="row">
         <div class="col-lg-12">
-          {{pw-operator-user-filter
-          register-as=filterOperatorUser
+          {{pw-aircraft-filter
+          register-as=filterAircraft
           shown=shownFilter
-          operatorRoles=operatorRoles
           applyFilter=(action "applyFilter")
           }}
         </div>
@@ -34,16 +33,19 @@
     <div class="row">
         <div class="col-lg-12">
           {{pw-table data=data
-          headerTemplate="main/operator-user/header"
-          footerTemplate="main/operator-user/footer"
-          masterTemplate="main/operator-user/row"
-          detailTemplate="main/operator-user/row-detail"
+          headerTemplate="main/aircraft/header"
+          footerTemplate="main/aircraft/footer"
+          masterTemplate="main/aircraft/row"
+          detailTemplate="main/aircraft/row-detail"
           isZebra=false
           isBordered =true
-          updateProfile=(action "updateProfile")
-          updateRole=(action "updateRole")
-          blockUser=(action "blockUser")
-          deleteUser=(action "deleteUser")
+          editAircraft=(action "editAircraft")
+          deleteAircraft=(action "deleteAircraft")
+
+          setupAvailability=(action "setupAvailability")
+          setupSpecialPrice=(action "setupSpecialPrice")
+          setupAmenities=(action "setupAmenities")
+          setupImages=(action "setupImages")
           }}
 
           {{pw-paging register-as=paging refresh=(action "refresh")}}

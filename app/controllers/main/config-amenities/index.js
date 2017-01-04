@@ -107,7 +107,6 @@ export default Ember.Controller.extend({
     },
 
     uploadCompleted(config) {
-      console.log('upload completed');
       this.retrieveConfigs();
     }
 

@@ -1,0 +1,41 @@
+{
+  "count": 1,
+  "data": [
+    {
+      "aircraftType": "ULTRA_LONG_RANGE",
+      "code": "TR4BXSPL5",
+      "id": 5,
+      "images": [],
+      "operator": {
+        "name": "bbb",
+        "code": "GQZ336",
+        "id": 6
+      },
+      "basePrice": 1,
+      "description": "test",
+      "marginPrice": 1,
+      "maxPassengers": 12,
+      "maxRangeKm": 1.0,
+      "maxRangeNm": 1.0,
+      "model": "AAA",
+      "registrationNumber": "BBB",
+      "safetyRating": "test",
+      "speedKmh": 12.0,
+      "speedKts": 12.0,
+      "status": "INACTIVE",
+      "yearOfMake": 1989,
+
+      "amenities": [],
+      "base": {
+        "id": 5,
+        "country": "Indonesia",
+        "iataCode": "HLP",
+        "icaoCode": "WIHH",
+        "municipality": "Jakarta",
+        "name": "Halim Perdanakusuma International Airport",
+        "region": "Jakarta Raya"
+      },
+
+    }
+  ]
+}

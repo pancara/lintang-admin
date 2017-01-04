@@ -11,26 +11,29 @@
     </button>
 </td>
 <td>
-  {{#if data.isActive}}
+  {{#if (eq data.status 'ACTIVE')}}
       <span class="pw-label pw-label-success pw-label-xs">A</span>
   {{else}}
       <span class="pw-label pw-label-danger pw-label-xs">I&nbsp;</span>
   {{/if}}
-
-  {{#if data.isBlocked}}
-      <span class="pw-label pw-label-amethyst pw-label-xs">B</span>
-  {{else}}
-      <span class="pw-label pw-label-purple pw-label-xs">U</span>
-  {{/if}}
-
 </td>
-<td>{{data.username}}</td>
-<td>{{data.operatorCode}}</td>
-<td>{{data.operatorName}}</td>
-<td>{{data.subRole}}</td>
+<td>{{data.code}}</td>
+<td>{{data.aircraftType}}</td>
+<td>{{data.model}}</td>
+<td>{{data.registrationNumber}}</td>
 <td>
-    <button class="btn btn-danger btn-xs" {{action "click"  "blockUser" data}}>
-      {{fa-icon "stop"}}
-      {{if data.isBlocked "Unblock" "Block"}}
+  {{data.operator.code}}<br/>
+  {{data.operator.name}}
+</td>
+<td>
+  {{data.base.icaoCode}}<br/>
+  {{data.base.name}}
+</td>
+<td>
+    <button class="btn btn-warning btn-xs" {{action "click"  "editAircraft" data}}>
+      edit
+    </button>
+    <button class="btn btn-danger btn-xs" {{action "click"  "deleteAircraft" data}}>
+      delete
     </button>
 </td>

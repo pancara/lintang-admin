@@ -6,17 +6,17 @@
         &nbsp;{{fa-icon "angle-left"}}&nbsp;
     </button>
 {{else}}
-    <button class="btn btn-xs" {{action "go" "first"}}>
+    <button class="btn btn-xs" {{action "go" "first"}} title="first">
         &nbsp;{{fa-icon "angle-double-left"}}&nbsp;
     </button>
-    <button class="btn btn-xs" {{action "go" "previous"}}>
+    <button class="btn btn-xs" {{action "go" "previous"}} title="previous">
         &nbsp;{{fa-icon "angle-left"}}&nbsp;
     </button>
 {{/if}}
 
 &nbsp;
 
-<button class="btn btn-xs" {{action "refresh"}}>
+<button class="btn btn-xs" {{action "refresh"}} title="refresh">
   {{current}}&nbsp;/&nbsp;{{pageCount}}
 </button>
 &nbsp;
@@ -29,10 +29,10 @@
         &nbsp;{{fa-icon "angle-double-right"}}&nbsp;
     </button>
 {{else}}
-    <button class="btn btn-xs" {{action "go" "next"}}>
+    <button class="btn btn-xs" {{action "go" "next"}} title="next">
         &nbsp;{{fa-icon "angle-right"}}&nbsp;
     </button>
-    <button class="btn btn-xs" {{action "go" "last"}}>
+    <button class="btn btn-xs" {{action "go" "last"}} title="last">
         &nbsp;{{fa-icon "angle-double-right"}}&nbsp;
     </button>
 {{/if}}

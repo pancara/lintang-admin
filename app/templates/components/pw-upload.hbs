@@ -1,1 +1,18 @@
-{{yield}}
+{{pw-upload-file url=url
+uploadFileChanged=(action "uploadFileChanged")
+uploadProgress=(action "uploadProgress")
+uploadCompleted=(action "uploadCompleted")
+uploadError=(action "uploadError")
+}}
+
+{{#if uploading}}
+  {{pw-progressbar percentage=percentage}}
+{{else}}
+  {{#if error}}
+      <span class="error">Error</span>
+  {{/if}}
+
+  {{#if success}}
+      <span class="success">Upload completed</span>
+  {{/if}}
+{{/if}}

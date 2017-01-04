@@ -25,6 +25,9 @@ Router.map(function () {
       this.route('form');
     });
 
+    this.route('booking', function () {
+    });
+
     this.route('config-default', function () {
       this.route('form');
     });
@@ -42,6 +45,10 @@ Router.map(function () {
       this.route('form');
     });
 
+    this.route('config-pricing', function () {
+      this.route('form');
+    });
+
     this.route('operator-user', function () {
       this.route('add-user');
       this.route('update-profile');
@@ -49,8 +56,13 @@ Router.map(function () {
     });
 
     this.route('aircraft', function () {
-      this.route('add-aircraft');
+      this.route('aircraft-form');
+      this.route('availability');
+      this.route('special-price');
+      this.route('amenities');
+      this.route('images');
     });
+
 
   });
   this.route('logout');

@@ -1,0 +1,14 @@
+{{input class="keyword" value=keyword placeholder="Code"}}
+<ul>
+  {{#each data as |row|}}
+      <li tabindex="0">{{row}}</li>
+  {{/each}}
+</ul>
+
+<div class="pw-data-select-paging">
+    <button>&lt;</button>
+    <button>&lt;&lt;</button>
+    <button>&gt;&gt;</button>
+    <button>&gt;</button>
+    <button {{action "close"}}>close</button>
+</div>

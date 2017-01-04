@@ -1,0 +1,117 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+          {{#if error}}
+              <div class="alert alert-danger" role="alert">
+                {{errorMessage}}
+              </div>
+          {{/if}}
+
+          {{#if success}}
+              <div class="alert alert-success" role="alert">
+                {{errorMessage}}
+              </div>
+          {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Pricing Name</span></div>
+        <div class="col-lg-5">
+          {{input class="form-control" value=pricingName}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Description</span></div>
+        <div class="col-lg-5">
+          {{textarea class="form-control" value=description}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Pricing Level</span></div>
+        <div class="col-lg-2">
+            <select class="form-control" onchange={{action "selectPricingLevel" value="target.value"}}>
+                <option>-</option>
+              {{#each pricingLevels as |pricingLevelOption|}}
+                  <option value={{pricingLevelOption}} selected={{eq pricingLevel pricingLevelOption}}>{{pricingLevelOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Amount Type</span></div>
+        <div class="col-lg-2">
+            <select class="form-control" onchange={{action "selectAmountType" value="target.value"}}>
+                <option>-</option>
+              {{#each pricingAmountTypes as |amountTypeOption|}}
+                  <option value={{amountTypeOption}} selected={{eq amountType amountTypeOption}}>{{amountTypeOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Pricing Value</span></div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=pricingValue type="number"}}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Pricing Count Type</span></div>
+        <div class="col-lg-4">
+            <select class="form-control" onchange={{action "selectPricingCountType" value="target.value"}}>
+                <option>-</option>
+              {{#each pricingCountTypes as |pricingCountTypeOption|}}
+                  <option value={{pricingCountTypeOption}} selected={{eq pricingCountType pricingCountTypeOption}}>{{pricingCountTypeOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Pricing Condition</span></div>
+        <div class="col-lg-3">
+            <select class="form-control" onchange={{action "selectPricingCondition" value="target.value"}}>
+                <option>-</option>
+              {{#each pricingConditions as |pricingConditionOption|}}
+                  <option value={{pricingConditionOption}} selected={{eq pricingConditionOption pricingCondition}}>{{pricingConditionOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Condition Amount</span></div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=conditionAmount type="number"}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Status</span></div>
+        <div class="col-lg-3">
+            <select class="form-control" onchange={{action "selectPricingStatus" value="target.value"}}>
+                <option>-</option>
+              {{#each pricingStatuses as |pricingStatusOption|}}
+                  <option value={{pricingStatusOption}} selected={{eq pricingStatusOption status}}>{{pricingStatusOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-2">
+            <button class="btn btn-success btn-sm" {{action "save"}}>
+              {{fa-icon "check"}} &nbsp; Save
+            </button>
+            <button class="btn btn-danger btn-sm" {{action "cancel"}}>
+              {{fa-icon "remove"}} &nbsp; Cancel
+            </button>
+        </div>
+    </div>
+</div>

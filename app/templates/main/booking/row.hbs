@@ -1,0 +1,33 @@
+<td>{{index}}.</td>
+<td>
+    <button class="btn btn-xs" {{action "toggleDetail"}}>
+      {{#unless detailVisible }}
+        {{fa-icon "plus" }}
+      {{/unless}}
+      {{#if detailVisible }}
+        {{fa-icon "minus" }}
+      {{/if}}
+
+    </button>
+</td>
+<td>
+  {{#if data.isActive}}
+      <span class="pw-label pw-label-success pw-label-xs">A</span>
+  {{else}}
+      <span class="pw-label pw-label-danger pw-label-xs">I&nbsp;</span>
+  {{/if}}
+
+  {{#if data.isBlocked}}
+      <span class="pw-label pw-label-amethyst pw-label-xs">B</span>
+  {{else}}
+      <span class="pw-label pw-label-purple pw-label-xs">U</span>
+  {{/if}}
+</td>
+<td>{{data.username}}</td>
+<td>{{data.firstName}} &nbsp; {{data.lastName}}</td>
+<td>{{data.phoneNumber}}</td>
+<td>
+    <button class="btn btn-primary btn-xs" {{action "click"  "setStatus" data}}>
+        set status
+    </button>
+</td>
