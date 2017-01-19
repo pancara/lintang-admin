@@ -1,0 +1,31 @@
+<div class="panel-body">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+              {{input type="text" value=keyword class="form-control" placeholder="Number, Customer Id"}}
+                <span class="input-group-addon" {{action "search"}}>Search Order</span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <button class="btn btn-xs pull-right" {{action "close" false}}>
+              {{fa-icon "remove"}}
+            </button>
+        </div>
+    </div>
+    <div class="row">
+      {{pw-table data=data
+      headerTemplate="components/pw-booking-search/header"
+      footerTemplate="components/pw-booking-search/footer"
+      masterTemplate="components/pw-booking-search/row"
+      detailTemplate="components/pw-booking-search/row-detail"
+      isZebra=false
+      isBordered=true
+      selectBooking=(action "selectBooking")
+      }}
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-paging register-as=paging rowPerPage=5 refresh=(action "refresh")}}
+        </div>
+    </div>
+</div>

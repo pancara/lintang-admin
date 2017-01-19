@@ -41,7 +41,6 @@ export default Ember.Controller.extend({
     },
 
     deleteImage(image) {
-      console.log(image);
       if (!this.get('uiService').confirm('Remove aircraft picture ?')) {
         return;
       }
@@ -62,27 +61,20 @@ export default Ember.Controller.extend({
         });
     },
 
-    addAmenity(amenity) {
+    setMainImage(image) {
       var header = {
         Authorization: this.get('securityService').getAuthBearer()
       };
 
-      let aircraft = this.get('aircraft');
       let that = this;
-      let url = 'aircraft/amenities/' + aircraft.id;
+      let url = 'aircraft/image/' + image.id;
 
-      let param = {
-        "amenitiesId": [
-          amenity.id
-        ]
-      };
-
-      this.get('requestSender').ajaxPost(url, JSON.stringify(param), header)
+      this.get('requestSender').ajaxPut(url, null, header)
         .then(function (json) {
-          this.get('aircraft').amenities.pushObject(amenity);
-          this.get('uiService').showMessage('Amenity added');
+          image.isMainImage = true;
+          this.get('uiService').showMessage('Aircraft main image changed');
         }, function (reason) {
-          that.get('uiService').showMessage('Add amenitiy failed. [' + reason.xhr.responseText + ']')
+          that.get('uiService').showMessage('Set aircraft main image failed. [' + reason.xhr.responseText + ']')
         });
     },
 

@@ -6,7 +6,6 @@ export default Ember.Component.extend({
   option: null,
 
   click() {
-    console.log('item select');
     this.sendAction('itemSelect', this.get('option'));
   },
   doubleClick() {

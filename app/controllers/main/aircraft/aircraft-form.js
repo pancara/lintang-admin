@@ -1,5 +1,6 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
+import JsonUtil from '../../../utils/json-util';
 
 
 export default Ember.Controller.extend({
@@ -207,10 +208,10 @@ export default Ember.Controller.extend({
     var promise;
     if (aircraft == null) {
       var url = 'aircraft/' + operator.id;
-      promise = this.get('request-sender').ajaxPost(url, JSON.stringify(param), header);
+      promise = this.get('request-sender').ajaxPost(url, JsonUtil.toJson(param), header);
     } else {
       var url = 'aircraft/' + aircraft.id;
-      promise = this.get('request-sender').ajaxPut(url, JSON.stringify(param), header);
+      promise = this.get('request-sender').ajaxPut(url, JsonUtil.toJson(param), header);
     }
 
     promise.then(function (json) {
@@ -312,6 +313,17 @@ export default Ember.Controller.extend({
 
     refreshAirport() {
 
+    },
+
+    speedKmhChange() {
+    },
+
+    speedKtsChange() {
+    },
+
+    maxRangeNmChange() {
+    },
+    maxRangeKmChange() {
     }
 
   }

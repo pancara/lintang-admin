@@ -61,7 +61,7 @@ export default Ember.Controller.extend({
       //};
       //
       //let that = this;
-      //this.get('request-sender').ajaxPut('customer/' + customer.id, JSON.stringify(param), header)
+      //this.get('request-sender').ajaxPut('customer/' + customer.id, JsonUtil.toJson(param), header)
       //  .then(function (json) {
       //    that.retrieveCustomer();
       //  }, function (reason) {

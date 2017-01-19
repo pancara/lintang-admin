@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import moment from 'moment';
+import DateUtil from '../utils/date-util';
 
 export function dateMonthName(params/*, hash*/) {
   var month = params[0];
-  var date = new Date(2000, month, 1);
-  return moment(date).format('MMMM');
+  return DateUtil.monthName(month);
 }
 
 export default Ember.Helper.helper(dateMonthName);

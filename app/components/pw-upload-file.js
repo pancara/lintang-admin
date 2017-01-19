@@ -17,13 +17,13 @@ export default EmberUploader.FileField.extend(RegisterAsComponent, {
   filesDidChange: function (files) {
     this.sendAction('uploadFileChanged');
 
-    //let url = Constant.SERVER_URL + this.get('url');
-    let url = 'http://posttestserver.com/post.php';
+    let url = Constant.SERVER_URL + this.get('url');
+    //let url = 'http://posttestserver.com/post.php';
     let uploader = EmberUploader.Uploader.create({
       url: url,
       ajaxSettings: {
         headers: {
-          //Authorization: this.get('securityService').getAuthBearer()
+          Authorization: this.get('securityService').getAuthBearer()
         }
       }
     });

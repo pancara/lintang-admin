@@ -1,23 +1,25 @@
 .pw-message {
   z-index: 100000;
   position: fixed;
-  top: 0;
-  right: 10px;
+  bottom: 0;
+  right: 4px;
   width: 300px;
   height: auto;
   display: inline-block;
   background: #FFF;
   padding: 4px 8px 4px 8px;
-  border-radius: 7px;
+  border-radius: 4px;
   font-size: 12px;
-  background: #B52521;
+  background: transparentize(#B52521, 0.3);
   margin-top: 4px;
   margin-bottom: 4px;
   @include filter(drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.2)));
 
   span {
     font-size: 12px;
+    line-height: 16px;
     color: #FFF;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5);
   }
 
   &.pw-message-success {

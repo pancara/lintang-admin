@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
-
+import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
@@ -20,30 +20,40 @@ export default Ember.Controller.extend({
   errorMessage: 'Error',
   success: false,
 
-  reset() {
-    let that = this;
-    let operator = this.get('operatorCtrl').get('operator');
-    this.addObserver('operator', this, function () {
-      let operator = that.get('operator');
-      that.set('name', operator.get('name'));
-      that.set('description', operator.get('description'));
-      that.set('contactName', operator.get('contactName'));
-      that.set('contactPhone', operator.get('contactPhone'));
-      that.set('contactMail', operator.get('contactMail'));
 
+  resetForm() {
+    //let operator = this.get('operator');
+    //if (operator != null) {
+    //  this.set('name', operator.get('name'));
+    //  this.set('description', operator.get('description'));
+    //  this.set('contactName', operator.get('contactName'));
+    //  this.set('contactPhone', operator.get('contactPhone'));
+    //  this.set('contactMail', operator.get('contactMail'));
+    //
+    //
+    //  let bankInfo = operator.get('bankInfo');
+    //  if (bankInfo != null) {
+    //    this.set('bankAccountNumber', bankInfo.account);
+    //    this.set('bankAccountName', bankInfo.get('name'));
+    //    this.set('bankBranch', bankInfo.get('branch'));
+    //
+    //    let bank = bankInfo.get('bank');
+    //    if (bank != null) {
+    //      this.set('bankId', bank.get('id'));
+    //    }
+    //  }
+    //} else {
+      this.set('name', null);
+      this.set('description', null);
+      this.set('contactName', null);
+      this.set('contactPhone', null);
+      this.set('contactMail', null);
 
-      let bankInfo = operator.get('bankInfo');
-      if (bankInfo != null) {
-        that.set('bankAccountNumber', bankInfo.account);
-        that.set('bankAccountName', bankInfo.get('name'));
-        that.set('bankBranch', bankInfo.get('branch'));
-
-        let bank = bankInfo.get('bank');
-        if (bank != null) {
-          that.set('bankId', bank.get('id'));
-        }
-      }
-    });
+      this.set('bankAccountNumber', null);
+      this.set('bankAccountName', null);
+      this.set('bankBranch', null);
+      this.set('bankId', null);
+    //}
   },
 
   populateBank() {
@@ -92,7 +102,7 @@ export default Ember.Controller.extend({
       };
 
       let that = this;
-      this.get('request-sender').ajaxPost('operator', JSON.stringify(param), header)
+      this.get('request-sender').ajaxPost('operator', JsonUtil.toJson(param), header)
         .then(function (json) {
           let prop = {
             errorMessage: 'New operator created',
@@ -111,7 +121,6 @@ export default Ember.Controller.extend({
             success: false
           };
           that.setProperties(prop);
-
         });
     },
     cancel() {

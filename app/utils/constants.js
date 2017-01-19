@@ -1,5 +1,6 @@
 export default  {
-  SERVER_URL : 'http://dev.lintang.id/',
+  SERVER_URL : 'http://dev.lintang.id/api/',
+  HOST_URL : 'http://dev.lintang.id/',
 
   // must be synced with constant value is constants.scss file.
   SCREEN: {

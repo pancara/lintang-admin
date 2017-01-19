@@ -14,7 +14,6 @@ export default Ember.Route.extend({
     this.get('request-sender').ajaxGet('admin/profile', null, header).then(function (json) {
       that.controllerFor('main.user-profile').set('profile', Administrator.create(json));
     }, function () {
-      console.log('error..');
     });
   }
 });

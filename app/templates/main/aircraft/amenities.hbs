@@ -39,7 +39,6 @@
                 </tr>
                 <tr>
                     <th style="width: 10px;"></th>
-                    <th style="width: 10px;"></th>
                     <th style="width: 40px;"></th>
                     <th>Name</th>
                     <th>Description</th>
@@ -51,13 +50,8 @@
                     <tr>
                         <td>{{ add index 1 }}.</td>
                         <td>
-                          {{#if (eq amenity.status "ACTIVE")}}
-                              <span class="pw-label pw-label-success pw-label-xs">A</span>
-                          {{else}}
-                              <span class="pw-label pw-label-danger pw-label-xs">I&nbsp;</span>
-                          {{/if}}
+                          {{pw-image default="images/default/amenity.png" source=amenity.logo style="max-width: 100px; float: left; margin-right: 8px;"}}
                         </td>
-                        <td>{{amenity.logo}}</td>
                         <td>{{amenity.name}}</td>
                         <td>{{amenity.description}}</td>
                         <td>
@@ -70,8 +64,6 @@
                 <tr>
                     <td></td>
                     <td colspan="5">
-                        <span class="pw-label pw-label-success pw-label-xs">Active</span>
-                        <span class="pw-label pw-label-danger pw-label-xs">Inactive</span>
                     </td>
                 </tr>
                 </tfoot>

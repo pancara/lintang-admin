@@ -1,6 +1,7 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
 import ArrayUtil from '../../../utils/array-util';
+import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   dataStub: Ember.inject.service('datastub'),
@@ -14,79 +15,6 @@ export default Ember.Controller.extend({
   error: false,
   errorMessage: 'Error',
   success: false,
-
-  //init() {
-  //  this.set('aircraft', {
-  //    "model": "Airbus A319",
-  //    "registrationNumber": "N-X-211",
-  //    "aircraftType": "ULTRA_LONG_RANGE",
-  //    "safetyRating": "FAA IASA Category 1",
-  //    "description": "The most comfortable way to fly",
-  //    "yearOfMake": "2010",
-  //    "maxPassengers": "15",
-  //    "speedKts": "510",
-  //    "speedKmh": "700",
-  //    "maxRangeKm": "8000",
-  //    "maxRangeNm": "5000",
-  //    "basePrice": "500000",
-  //    "marginPrice": "100000",
-  //    "status": "ACTIVE",
-  //    "id": "10",
-  //    "code": "PWXONJ12",
-  //    "base": {
-  //      "id": "1",
-  //      "icaoCode": "WIHH",
-  //      "iataCode": "CGK",
-  //      "name": "Halim Perdana Kusumah",
-  //      "description": "Halim Perdana Kusumah",
-  //      "point": {
-  //        "latitude": "234.00",
-  //        "longitude": "14.00"
-  //      },
-  //      "municipality": "Jakarta",
-  //      "region": "Jakarta Raya",
-  //      "country": "Indonesia"
-  //    },
-  //    "operator": {
-  //      "name": "Lintang Air",
-  //      "description": "Value for money Private Jet Charter service",
-  //      "contactName": "Badu Badu PhD.",
-  //      "contactPhone": "0888864279",
-  //      "contactMail": "trisna@lintang.id",
-  //      "id": "21",
-  //      "bankInfo": {
-  //        "branch": "Cibubur",
-  //        "account": "123456780",
-  //        "name": "Trisna Wanto",
-  //        "bank": {
-  //          "id": "50",
-  //          "code": "012",
-  //          "name": "Bank Mandiri"
-  //        }
-  //      },
-  //      "code": "PWXOMJ21",
-  //      "status": "ACTIVE",
-  //      "fee": "5.0"
-  //    },
-  //    "images": [
-  //      {
-  //        "id": 1,
-  //        "url": "aircraft/uwjwlkwo99.jpg",
-  //        "description": "Front View",
-  //        "isMainImage": "true"
-  //      }
-  //    ],
-  //    "amenities": [
-  //      {
-  //        "name": "WIFI",
-  //        "description": "All in WIFI service",
-  //        "status": "ACTIVE",
-  //        "id": 1,
-  //        "logo": "amenities/ioieu3999"
-  //      }
-  //    ]
-  //  });
-  //},
 
   afterRender() {
   },
@@ -176,15 +104,10 @@ export default Ember.Controller.extend({
         Authorization: this.get('securityService').getAuthBearer()
       };
 
-      let param = {
-        amenitiesId: [
-          amenity.id
-        ]
-      };
-      let url = 'aircraft/amenities/' + aircraft.id;
+      let url = 'aircraft/amenities/' + aircraft.id + '/' + amenity.id;
 
       let that = this;
-      this.get('requestSender').ajaxDelete(url, JSON.stringify(param), header)
+      this.get('requestSender').ajaxDelete(url, null, header)
         .then(function (json) {
           Ember.set(aircraft, 'amenities', ArrayUtil.removeObject(aircraft.amenities, amenity))
         }, function (reason) {
@@ -207,7 +130,7 @@ export default Ember.Controller.extend({
       };
 
       let that = this;
-      this.get('requestSender').ajaxPost(url, JSON.stringify(param), header)
+      this.get('requestSender').ajaxPost(url, JsonUtil.toJson(param), header)
         .then(function (json) {
           that.get('aircraft').amenities.pushObject(amenity);
           that.get('uiService').showMessage('Amenity added');

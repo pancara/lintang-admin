@@ -1,6 +1,8 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
 import ArrayUtil from '../../../utils/array-util';
+import DateUtil from '../../../utils/date-util';
+import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   dataStub: Ember.inject.service('datastub'),
@@ -9,10 +11,13 @@ export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
   requestSender: Ember.inject.service('requestSender'),
 
+  month: DateUtil.currentMonth(),
+  year: DateUtil.currentYear(),
   aircraft: null,
-  specialPriceDate: new Date(),
-  specialPricePercentage: 0,
-  specialPriceDescription: null,
+
+  bookingDate: new Date(),
+  reason: null,
+  description: null,
 
   error: false,
   errorMessage: 'Error',
@@ -23,6 +28,7 @@ export default Ember.Controller.extend({
 
   afterRender() {
     this.populateLookups();
+    this.populateBookingDates();
   },
 
   reset() {
@@ -33,38 +39,54 @@ export default Ember.Controller.extend({
   },
 
   populateLookups() {
+    this.set('months', DateUtil.getMonths());
     this.set('bookingReasons', this.get('dataStub').getBookingReasons());
   },
 
-  populateSpecialPrices() {
-    var header = {
-      Authorization: this.get('securityService').getAuthBearer()
-    };
+  populateBookingDates() {
+    let aircraft = this.get('aircraft');
+
+    if (aircraft == null) {
+      return;
+    }
 
     let paging = this.get('paging');
-    paging.set('rowPerPage', 30);
+    var rowPerPage = 30;
+    var current = 1;
+    if (paging != null) {
+      paging.set('rowPerPage', 30);
+      current = paging.get('current');
+    }
+
     let that = this;
     let param = {
-      limit: paging.get('rowPerPage'),
-      page: paging.get('current')
+      limit: rowPerPage,
+      page: current,
+      aircraftId: aircraft.id,
+      month: this.get('month') + 1, // month is 1 base
+      year: this.get('year')
     };
 
     Ember.$.extend(param, this.get('filter'));
-    let url = 'config/specialprice';
+    let url = 'aircraft/unavailability';
+
+    var header = {
+      Authorization: this.get('securityService').getAuthBearer()
+    };
     this.get('requestSender').ajaxGet(url, param, header)
       .then(function (json) {
         paging.set('totalRow', json.count);
-        let specialPriceList = {
+        let data = {
           start: (paging.get('current') - 1) * paging.get('rowPerPage'),
           data: json.data
         };
-        that.set('specialPriceList', specialPriceList);
+        that.set('data', data);
       }, function (reason) {
       });
   },
 
-  doDelete(specialPrice) {
-    if (!this.get('uiService').confirm('Remove special price ' + specialPrice.description + ' ?')) {
+  doDelete(booking) {
+    if (!this.get('uiService').confirm('Remove booking data ' + booking.description + ' ?')) {
       return;
     }
 
@@ -72,15 +94,14 @@ export default Ember.Controller.extend({
       Authorization: this.get('securityService').getAuthBearer()
     };
 
-    let url = 'aircraft/specialprice/' + specialPrice.id;
+    let url = 'aircraft/unavailability/' + booking.id;
     let that = this;
 
     this.get('requestSender').ajaxDelete(url, null, header)
       .then(function (json) {
-        let specialPriceList = that.get('specialPriceList');
-        Ember.set(that, 'specialPriceList', ArrayUtil.removeObject(specialPriceList, specialPrice))
+        that.refreshData();
       }, function (reason) {
-        that.get('uiService').showMessage('Delete special-price failed. [' + reason.xhr.responseText + ']')
+        that.get('uiService').showMessage('Delete booking failed. [' + reason.xhr.responseText + ']')
       });
   },
 
@@ -99,35 +120,67 @@ export default Ember.Controller.extend({
       reason: reason,
       description: description
     };
+
     let that = this;
 
-    let booking = this.get('booking');
-    if (booking == null) {
+    let selectedBooking = this.get('selectedBooking');
+    if (selectedBooking == null) {
       let aircraft = this.get('aircraft');
       let url = 'aircraft/unavailability/' + aircraft.id;
 
-      this.get('requestSender').ajaxPost(url, JSON.stringify(param), header)
+      this.get('requestSender').ajaxPost(url, JsonUtil.toJson(param), header)
         .then(function (json) {
+          that.refreshData();
+          that.set('editMode', false);
         }, function (reason) {
-          that.get('uiService').showMessage('Add amenitiy failed. [' + reason.xhr.responseText + ']')
+          that.get('uiService').showMessage('Add data failed. [' + reason.xhr.responseText + ']')
         });
     } else {
+      let url = 'aircraft/unavailability/' + selectedBooking.id;
 
+      this.get('requestSender').ajaxPut(url, JsonUtil.toJson(param), header)
+        .then(function (json) {
+          that.refreshData();
+          that.set('editMode', false);
+        }, function (reason) {
+          that.get('uiService').showMessage('Add data failed. [' + reason.xhr.responseText + ']')
+        });
+    }
+  },
+
+
+  refreshData() {
+    if (this.get('paging').get('current') == 1) {
+      this.populateBookingDates();
+    } else {
+      this.get('paging').set('current', 1);
     }
   },
 
   actions: {
-    deleteSpecialPrice(specialPrice) {
-      this.doDelete(specialPrice);
+    deleteBooking(booking) {
+      this.doDelete(booking);
     },
 
     addBooking() {
       this.populateLookups();
+      this.set('selectedBooking', null);
+
+      this.set('bookingDate', new Date());
+      this.set('reason', null);
+      this.set('description', null);
+
       this.set('editMode', true);
     },
 
-    editBooking() {
+    editBooking(booking) {
       this.populateLookups();
+      this.set('selectedBooking', booking);
+
+      this.set('bookingDate', new Date(booking.date));
+      this.set('reason', booking.reason);
+      this.set('description', booking.description);
+
       this.set('editMode', true);
     },
 
@@ -140,11 +193,20 @@ export default Ember.Controller.extend({
     },
 
     refresh() {
-      this.populateSpecialPrices();
+      this.populateBookingDates();
     },
 
     selectBookingReason(reason) {
       this.set('reason', reason);
+    },
+
+    selectMonth(month) {
+      this.set('month', month);
+      this.refreshData();
+    },
+
+    yearChange() {
+      this.refreshData();
     }
   }
 });

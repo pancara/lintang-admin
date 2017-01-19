@@ -1,4 +1,5 @@
 import Ember from 'ember'
+import JsonUtil from '../../utils/json-util';
 
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
@@ -26,9 +27,7 @@ export default Ember.Controller.extend({
       let newPassword = this.get('newPassword');
       let confirmation = this.get('confirmation');
 
-      console.log(oldPassword);
       if (oldPassword === undefined || oldPassword == null || oldPassword === '') {
-        console.log('old password empty');
         let prop = {
           errorMessage: 'Please, enter your old password',
           error: true
@@ -58,7 +57,7 @@ export default Ember.Controller.extend({
         'Authorization': that.get('securityService').getAuthBearer()
       };
 
-      this.get('requestSender').ajaxPut('password', JSON.stringify(params), header).then(function (json) {
+      this.get('requestSender').ajaxPut('password', JsonUtil.toJson(params), header).then(function (json) {
         let prop = {
           errorMessage: 'Password updated',
           error: false,

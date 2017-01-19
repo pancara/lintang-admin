@@ -1,0 +1,57 @@
+<td>{{index}}.</td>
+<td>
+    <button class="btn btn-xs" {{action "toggleDetail"}}>
+      {{#unless detailVisible }}
+        {{fa-icon "plus" }}
+      {{/unless}}
+      {{#if detailVisible }}
+        {{fa-icon "minus" }}
+      {{/if}}
+
+    </button>
+</td>
+<td>
+  {{#if (eq data.orderStatus "CREATED")}}
+      <span class="pw-label pw-label-primary pw-label-xs">C</span>
+  {{else}}
+    {{#if (eq data.orderStatus "CANCELED")}}
+        <span class="pw-label pw-label-danger pw-label-xs">A</span>
+    {{else}}
+      {{#if (eq data.orderStatus "PAID")}}
+          <span class="pw-label pw-label-success pw-label-xs">P</span>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq data.orderType "CHARTER")}}
+      <span class="pw-label pw-label-primary pw-label-xs">C</span>
+  {{else}}
+    {{#if (eq data.orderType "DEAL")}}
+        <span class="pw-label pw-label-danger pw-label-xs">D</span>
+    {{else}}
+      {{#if (eq data.orderType "SHUTTLE")}}
+          <span class="pw-label pw-label-success pw-label-xs">S</span>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+</td>
+<td>{{data.number}}</td>
+<td>
+    {{#if data.orderDate }}
+      {{moment-format data.orderDate 'DD MMMM YYYY hh:mm'}}
+    {{/if}}
+</td>
+<td>
+  {{data.customer.username}}<br/>
+  {{data.customer.firstName}} &nbsp; {{data.customer.lastName}}
+</td>
+<td>
+  {{data.charter.aircraft.registrationNumber}} <br/>
+  {{data.charter.aircraft.aircraftType}}
+</td>
+<td>
+    <button class="btn btn-success btn-xs" {{action "click"  "selectBooking" data}}>
+        select
+    </button>
+</td>

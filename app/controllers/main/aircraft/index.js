@@ -1,5 +1,6 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
+import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   dataStub: Ember.inject.service('datastub'),
@@ -46,9 +47,8 @@ export default Ember.Controller.extend({
     };
 
     let url = 'aircraft';
-
     let that = this;
-    this.get('requestSender').ajaxGet(url, param, header)
+    this.get('requestSender').ajaxGet(url, JsonUtil.cleanEmptyProperty(param), header)
       .then(function (json) {
         paging.set('totalRow', json.count);
         //json = that.get('dataStub').getAircrafts();

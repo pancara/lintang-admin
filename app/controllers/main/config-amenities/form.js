@@ -1,6 +1,7 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
 import Constant from '../../../utils/constants';
+import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
@@ -73,10 +74,10 @@ export default Ember.Controller.extend({
       let configId = this.get('configId');
       if (configId == null) {
         let url = 'config/amenities';
-        response = this.get('request-sender').ajaxPost(url, JSON.stringify(param), header);
+        response = this.get('request-sender').ajaxPost(url, JsonUtil.toJson(param), header);
       } else {
         let url = 'config/amenities/' + configId;
-        response = this.get('request-sender').ajaxPut(url, JSON.stringify(param), header);
+        response = this.get('request-sender').ajaxPut(url, JsonUtil.toJson(param), header);
       }
 
       response.then(function (json) {

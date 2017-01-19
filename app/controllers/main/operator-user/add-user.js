@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
-
+import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   dataStub: Ember.inject.service('datastub'),
@@ -147,7 +147,7 @@ export default Ember.Controller.extend({
 
       let that = this;
       var url = 'operatoruser/' + this.get('operator').id;
-      this.get('request-sender').ajaxPost(url, JSON.stringify(param), header)
+      this.get('request-sender').ajaxPost(url, JsonUtil.toJson(param), header)
         .then(function (json) {
           let prop = {
             errorMessage: 'New operator created',

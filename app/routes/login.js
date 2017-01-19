@@ -1,9 +1,9 @@
 import Ember from 'ember';
+import BaseRoute from '../mixins/base-route';
 
-export default Ember.Route.extend({
-  activate() {
-    this._super();
-  },
+
+export default Ember.Route.extend(BaseRoute, {
+
   setupController(controller, model) {
     controller.setProperties({
       hasError: false,

@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
-
+import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
@@ -137,10 +137,10 @@ export default Ember.Controller.extend({
 
       if (pricing == null) {
         let url = 'config/pricing';
-        promise = this.get('request-sender').ajaxPost(url, JSON.stringify(param), header);
+        promise = this.get('request-sender').ajaxPost(url, JsonUtil.toJson(param), header);
       } else {
         let url = 'config/pricing/' + pricing.id;
-        promise = this.get('request-sender').ajaxPut(url, JSON.stringify(param), header)
+        promise = this.get('request-sender').ajaxPut(url,JsonUtil.toJsony(param), header)
       }
 
       promise.then(function (json) {

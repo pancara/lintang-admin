@@ -15,8 +15,6 @@ export default Ember.Component.extend(RegisterAsComponent, {
     },
 
     uploadProgress(e) {
-      console.log('progress');
-      console.log(e);
       this.set('percentage', e.percent);
     },
 

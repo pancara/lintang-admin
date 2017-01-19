@@ -3,9 +3,10 @@ import RegisterAsComponent from '../mixins/register-as-component';
 
 export default Ember.Component.extend(RegisterAsComponent, {
   classNames: ['pw-navigation'],
+  bindingAttributes: ['rowPerPage'],
   pageCount: 1,
   current: 1,
-  rowPerPage: 25,
+  rowPerPage: 10,
   totalRow: 20,
 
   init() {
@@ -29,7 +30,6 @@ export default Ember.Component.extend(RegisterAsComponent, {
     },
 
     go(param) {
-      console.log(param);
 
       var current = this.get('current');
       var pageCount = this.get('pageCount');

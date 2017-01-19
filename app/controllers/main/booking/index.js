@@ -3,6 +3,7 @@ import Ember from 'ember'
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
   dataStub: Ember.inject.service('datastub'),
+  uiService: Ember.inject.service('ui-service'),
 
   data: null,
   shownFilter: false,
@@ -37,9 +38,8 @@ export default Ember.Controller.extend({
       status: filter.bookingStatus,
       orderType: filter.orderType,
 
-      aircraftId: filter.aircraftId,
-      operatorId: filter.operatorId,
-      customerId: filter.customerId
+      operatorCode: filter.operatorCode,
+      customerMail: filter.customerMail
     };
 
     let url = 'order';
@@ -52,6 +52,37 @@ export default Ember.Controller.extend({
         };
         that.set('data', data);
       }, function (reason) {
+        that.get('uiService').showMessage('Request data fail. ' + reason.error);
+      });
+  },
+
+  doCancelBooking(booking) {
+    var header = {
+      Authorization: this.get('securityService').getAuthBearer()
+    };
+
+    let url = 'order/' + booking.id;
+    let that = this;
+    this.get('request-sender').ajaxPut(url, null, header)
+      .then(function (json) {
+        that.retrieveBookings();
+      }, function (reason) {
+        that.get('uiService').showMessage(reason.xhr.responseText);
+      });
+  },
+
+  doConfirmPayment(booking) {
+    var header = {
+      Authorization: this.get('securityService').getAuthBearer()
+    };
+
+    let url = 'payment/confirm/' + booking.id;
+    let that = this;
+    this.get('request-sender').ajaxPut(url, null, header)
+      .then(function (json) {
+        that.retrieveBookings();
+      }, function (reason) {
+        that.get('uiService').showMessage(reason.xhr.responseText);
       });
   },
 
@@ -76,7 +107,15 @@ export default Ember.Controller.extend({
     },
 
     cancelBooking(booking) {
+      if (this.get('uiService').confirm('cancel Order ?')) {
+        this.doCancelBooking(booking);
+      }
+    },
 
+    confirmPayment(booking) {
+      if (this.get('uiService').confirm('confirm Payment ?')) {
+        this.doConfirmPayment(booking);
+      }
     }
   }
 });

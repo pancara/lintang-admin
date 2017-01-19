@@ -1,47 +1,70 @@
 {{pw-page-title title="Aircraft" subtitle="Availability" icon="plane"}}
 <div class="container-fluid">
   {{partial "main/aircraft/aircraft-detail"}}
+    <div class="row">
+        <div class="col-lg-2">
+
+            <select class="form-control" onchange={{action "selectMonth" value="target.value"}}>
+              {{#each months as |month|}}
+                  <option value="{{month}}">{{date-month-name month}}</option>
+              {{/each}}
+            </select>
+        </div>
+        <div class="col-lg-2">
+          {{input class="form-control" value=year type="number" min=2000 max=2100 change=(action "yearChange")}}
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-12">
             <table class="pw-table pw-bordered">
                 <thead>
                 <tr>
-                    <th colspan="6">List of Bookings</th>
-                </tr>
-                <tr>
                     <th style="width: 10px;"></th>
-                    <th style="width: 320px;">Booking Date</th>
+                    <th style="width: 320px;">Date</th>
                     <th style="width: 100px;">Reason</th>
-                    <th>Description</th>
-                    <th style="width: 10px;"></th>
+                    <th style="width: auto;">Description</th>
+                    <th style="width: 140px;"></th>
                 </tr>
                 </thead>
                 <tbody>
-                {{#each specialPriceList as |specialPrice index |}}
+                {{#each data.data as |booking index |}}
                     <tr>
                         <td>{{ add index 1 }}.</td>
-                        <td>{{specialPrice.date}}</td>
-                        <td>{{specialPrice.percentageOfPrice}} %</td>
-                        <td>{{specialPrice.description}}</td>
+                        <td>{{moment-format booking.date 'DD MMMM YYYY'}}</td>
+                        <td>{{booking.reason}}</td>
+                        <td>{{booking.description}}</td>
                         <td>
-                            <button class="btn btn-warning btn-xs" {{action "editSpecialPrice" amenity}}>edit</button>
-                            <button class="btn btn-danger btn-xs" {{action "deleteSpecialPrice" amenity}}>delete</button>
+                            <button class="btn btn-warning btn-xs" {{action "editBooking" booking}}>edit</button>
+                            <button class="btn btn-danger btn-xs" {{action "deleteBooking" booking}}>delete</button>
                         </td>
                     </tr>
                 {{/each}}
                 </tbody>
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td>
+                      {{#unless editMode}}
+                          <button class="btn btn-success btn-xs" {{action "addBooking"}}>
+                              add
+                          </button>
+                      {{/unless}}
+                    </td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>
 
+  {{pw-paging register-as=paging refresh=(action "refresh") }}
+
   {{#if editMode}}
-      <div class="panel panel-default">
+      <div class="panel panel-default" style="margin-top: 8px;">
           <div class="panel-body">
               <div class="row">
                   <div class="col-lg-2"><span class="field">Booking Date Time :</span></div>
-                  <div class="col-lg-2">{{pw-datepicker value=bookingDate}}</div>
-                  <div class="col-lg-2">{{pw-timepicker value=bookingDate}}</div>
+                  <div class="col-lg-2">{{pw-datepicker value=bookingDate disabled=(if selectedBooking true false)}}</div>
               </div>
               <div class="row">
                   <div class="col-lg-2"><span class="field">Reason :</span></div>
@@ -64,12 +87,6 @@
                       <button class="btn btn-danger btn-sm" {{action "cancelData"}}>Cancel</button>
                   </div>
               </div>
-          </div>
-      </div>
-  {{else}}
-      <div class="row">
-          <div class="col-lg-12">
-              <button class="btn btn-success btn-xs" {{action "addBooking"}}>{{fa-icon "plus"}} Add</button>
           </div>
       </div>
   {{/if}}

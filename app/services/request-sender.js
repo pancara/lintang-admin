@@ -1,8 +1,10 @@
 import Ember from 'ember';
+import Constant from '../utils/constants';
+import JsonUtil from '../utils/json-util';
 
 export default Ember.Service.extend({
   uiService: Ember.inject.service('ui-service'),
-  baseUrl: 'http://dev.lintang.id/api/',
+  baseUrl: Constant.SERVER_URL,
   requestCount: 0,
 
   getFullURL(url) {
@@ -10,7 +12,7 @@ export default Ember.Service.extend({
   },
 
   ajaxGet(url, data, header) {
-    return this.ajax(url, 'get', data, header);
+    return this.ajax(url, 'get', JsonUtil.cleanEmptyProperty(data), header);
   },
 
   ajaxPost(url, data, header) {

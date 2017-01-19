@@ -7,7 +7,6 @@ export default Ember.Component.extend({
   widget: null,
 
   didInsertElement() {
-    console.log('disInsertElement');
     var that = this;
 
     var widget = this.$('input').timepicker({
@@ -29,7 +28,6 @@ export default Ember.Component.extend({
   },
   actions: {
     showWidget() {
-      console.log('showWidget');
       let widget = this.get('widget');
       this.$(widget).timepicker('showWidget');
     }

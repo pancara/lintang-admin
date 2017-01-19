@@ -18,7 +18,9 @@
         <tr>
             <td>{{ add index 1 }}.</td>
             <td>{{amenity.status }}.</td>
-            <td>{{amenity.logo}}</td>
+            <td>
+              {{pw-image default="images/default/amenity.png" source=amenity.logo style="max-width: 64px; float: left; margin-right: 8px;"}}
+            </td>
             <td>{{amenity.name}}</td>
             <td>{{amenity.description}}</td>
         </tr>

@@ -40,28 +40,18 @@
 
     <div class="row">
         <div class="col-lg-2">
-            <span class="field">Customer</span>
-            <button class="btn btn-xs pull-right" {{action "clearCustomer"}}>clear</button>
+            <span class="field">Customer Mail</span>
         </div>
-        <div class="col-lg-10">
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-2">
-             <span class="field">Aircraft</span>
-            <button class="btn btn-xs pull-right" {{action "clearAircraft"}}>clear</button>
-        </div>
-        <div class="col-lg-10">
+        <div class="col-lg-3">
+          {{input class="form-control" value=customerMail}}
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-2">
-             <span class="field">Operator</span>
-            <button class="btn btn-xs pull-right" {{action "clearOperator"}}>clear</button>
+            <span class="field">Operator Code</span>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-3">
+          {{input class="form-control" value=operatorCode}}
         </div>
     </div>
 

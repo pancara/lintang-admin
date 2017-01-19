@@ -1,5 +1,6 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
+import JsonUtil from '../../../utils/json-util';
 
 
 export default Ember.Controller.extend({
@@ -134,7 +135,7 @@ export default Ember.Controller.extend({
 
       let that = this;
       let url = 'config/airportfee/parking';
-      this.get('request-sender').ajaxPut(url, JSON.stringify(param), header)
+      this.get('request-sender').ajaxPut(url, JsonUtil.toJson(param), header)
         .then(function (json) {
           let prop = {
             errorMessage: 'Data saved',

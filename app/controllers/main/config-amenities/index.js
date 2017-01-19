@@ -98,8 +98,6 @@ export default Ember.Controller.extend({
     },
 
     uploadProgress(config, e) {
-      console.log(config);
-      console.log(e);
     },
 
     uploadError(config) {

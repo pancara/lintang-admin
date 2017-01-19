@@ -11,7 +11,8 @@ export default Ember.Component.extend(RegisterAsComponent, {
   didRender() {
     var that = this;
 
-    var $datepicker = this.$('input').datepicker('update', this.get('value'))
+    var $datepicker = this.$('input').datepicker({format: 'dd M yyyy'});
+    $datepicker.datepicker('update', this.get('value'))
       .on('changeDate', function (e) {
         var value = that.get('value');
         if (value == null) {

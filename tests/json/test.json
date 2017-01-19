@@ -1,41 +1,506 @@
 {
-  "count": 1,
+  "count": 5,
   "data": [
     {
-      "aircraftType": "ULTRA_LONG_RANGE",
-      "code": "TR4BXSPL5",
-      "id": 5,
-      "images": [],
-      "operator": {
-        "name": "bbb",
-        "code": "GQZ336",
-        "id": 6
+      "charter": {
+        "aircraft": {
+          "aircraftType": "ULTRA_LONG_RANGE",
+          "description": "-test",
+          "model": "BB",
+          "registrationNumber": "BB-001-XY",
+          "yearOfMake": 1950,
+          "code": "BFLW2H9Y57",
+          "id": 57
+        },
+        "contactPerson": {
+          "email": "rugz33@gmail.com",
+          "name": "Rully Winata",
+          "phone": "6285722530233"
+        },
+        "daysCharter": 1,
+        "endFlight": "2017-01-20T00:00:00Z",
+        "legs": [
+          {
+            "flightDate": "2017-01-20T16:02:00Z",
+            "legNumber": 1,
+            "destinationAirport": {
+              "id": 21004,
+              "country": "Indonesia",
+              "iataCode": "DPS",
+              "icaoCode": "WADD",
+              "municipality": "Denpasar-Bali Island",
+              "name": "Ngurah Rai (Bali) International Airport",
+              "region": "Bali"
+            },
+            "legType": "TRIP_LEG",
+            "originAirport": {
+              "id": 14272,
+              "country": "Indonesia",
+              "iataCode": "HLP",
+              "icaoCode": "WIHH",
+              "municipality": "Jakarta",
+              "name": "Halim Perdanakusuma International Airport",
+              "region": "Jakarta Raya"
+            }
+          }
+        ],
+        "localTimeGmt": 7,
+        "passengers": [
+          {
+            "identityNumber": "56644444",
+            "identityType": "KTP",
+            "name": "rully",
+            "id": 503
+          },
+          {
+            "identityNumber": "5654444",
+            "identityType": "KTP",
+            "name": "trisna",
+            "id": 504
+          }
+        ],
+        "startFlight": "2017-01-20T00:00:00Z",
+        "status": "ORDERED",
+        "tripType": "SINGLE_TRIP"
       },
-      "basePrice": 1,
-      "description": "test",
-      "marginPrice": 1,
-      "maxPassengers": 12,
-      "maxRangeKm": 1.0,
-      "maxRangeNm": 1.0,
-      "model": "AAA",
-      "registrationNumber": "BBB",
-      "safetyRating": "test",
-      "speedKmh": 12.0,
-      "speedKts": 12.0,
-      "status": "INACTIVE",
-      "yearOfMake": 1989,
-
-      "amenities": [],
-      "base": {
-        "id": 5,
-        "country": "Indonesia",
-        "iataCode": "HLP",
-        "icaoCode": "WIHH",
-        "municipality": "Jakarta",
-        "name": "Halim Perdanakusuma International Airport",
-        "region": "Jakarta Raya"
+      "customer": {
+        "firstName": "Rully Winata",
+        "id": 11,
+        "profilePicture": "profile/776a1e0d-87b3-4db1-a130-75809f210267.jpg",
+        "username": "rugz33@gmail.com"
       },
-
+      "id": 452,
+      "number": "1001177475672665",
+      "orderDate": "2017-01-10T14:20:47.954Z",
+      "orderStatus": "CREATED",
+      "orderType": "CHARTER",
+      "payment": {
+        "amount": 9296166,
+        "amountAfterDiscount": 9296166,
+        "discount": 0,
+        "pricings": [
+          {
+            "amountType": "PERCENTAGE",
+            "pricingLevel": 1,
+            "pricingName": "TAX",
+            "pricingValue": 10.00,
+            "amount": 929617,
+            "id": 422
+          }
+        ],
+        "status": "CREATED",
+        "subTotal": 9296166,
+        "totalAmount": 10225783,
+        "totalPricing": 929617
+      }
+    },
+    {
+      "charter": {
+        "aircraft": {
+          "aircraftType": "ULTRA_LONG_RANGE",
+          "description": "-test",
+          "model": "BB",
+          "registrationNumber": "BB-001-XY",
+          "yearOfMake": 1950,
+          "code": "BFLW2H9Y57",
+          "id": 57
+        },
+        "contactPerson": {
+          "email": "rugz33@gmail.com",
+          "name": "Rully Winata",
+          "phone": "6285722530233"
+        },
+        "daysCharter": 1,
+        "endFlight": "2017-01-20T00:00:00Z",
+        "legs": [
+          {
+            "flightDate": "2017-01-20T16:02:00Z",
+            "legNumber": 1,
+            "destinationAirport": {
+              "id": 21004,
+              "country": "Indonesia",
+              "iataCode": "DPS",
+              "icaoCode": "WADD",
+              "municipality": "Denpasar-Bali Island",
+              "name": "Ngurah Rai (Bali) International Airport",
+              "region": "Bali"
+            },
+            "legType": "TRIP_LEG",
+            "originAirport": {
+              "id": 14272,
+              "country": "Indonesia",
+              "iataCode": "HLP",
+              "icaoCode": "WIHH",
+              "municipality": "Jakarta",
+              "name": "Halim Perdanakusuma International Airport",
+              "region": "Jakarta Raya"
+            }
+          }
+        ],
+        "localTimeGmt": 7,
+        "passengers": [
+          {
+            "identityNumber": "34555555",
+            "identityType": "KTP",
+            "name": "rully",
+            "id": 501
+          },
+          {
+            "identityNumber": "5568866",
+            "identityType": "KTP",
+            "name": "trisna",
+            "id": 502
+          }
+        ],
+        "startFlight": "2017-01-20T00:00:00Z",
+        "status": "ORDERED",
+        "tripType": "SINGLE_TRIP"
+      },
+      "customer": {
+        "firstName": "Rully Winata",
+        "id": 11,
+        "profilePicture": "profile/776a1e0d-87b3-4db1-a130-75809f210267.jpg",
+        "username": "rugz33@gmail.com"
+      },
+      "id": 451,
+      "number": "1001173358283499",
+      "orderDate": "2017-01-10T14:19:31.356Z",
+      "orderStatus": "CREATED",
+      "orderType": "CHARTER",
+      "payment": {
+        "amount": 9296166,
+        "amountAfterDiscount": 9296166,
+        "discount": 0,
+        "pricings": [
+          {
+            "amountType": "PERCENTAGE",
+            "pricingLevel": 1,
+            "pricingName": "TAX",
+            "pricingValue": 10.00,
+            "amount": 929617,
+            "id": 421
+          }
+        ],
+        "status": "CREATED",
+        "subTotal": 9296166,
+        "totalAmount": 10225783,
+        "totalPricing": 929617
+      }
+    },
+    {
+      "charter": {
+        "aircraft": {
+          "aircraftType": "ULTRA_LONG_RANGE",
+          "description": "-test",
+          "model": "BB",
+          "registrationNumber": "BB-001-XY",
+          "yearOfMake": 1950,
+          "code": "BFLW2H9Y57",
+          "id": 57
+        },
+        "contactPerson": {
+          "email": "rugz33@gmail.com",
+          "name": "Rully Winata",
+          "phone": "6285722530233"
+        },
+        "daysCharter": 1,
+        "endFlight": "2017-01-20T00:00:00Z",
+        "legs": [
+          {
+            "flightDate": "2017-01-20T16:02:00Z",
+            "legNumber": 1,
+            "destinationAirport": {
+              "id": 21004,
+              "country": "Indonesia",
+              "iataCode": "DPS",
+              "icaoCode": "WADD",
+              "municipality": "Denpasar-Bali Island",
+              "name": "Ngurah Rai (Bali) International Airport",
+              "region": "Bali"
+            },
+            "legType": "TRIP_LEG",
+            "originAirport": {
+              "id": 14272,
+              "country": "Indonesia",
+              "iataCode": "HLP",
+              "icaoCode": "WIHH",
+              "municipality": "Jakarta",
+              "name": "Halim Perdanakusuma International Airport",
+              "region": "Jakarta Raya"
+            }
+          }
+        ],
+        "localTimeGmt": 7,
+        "passengers": [
+          {
+            "identityNumber": "566677777",
+            "identityType": "KTP",
+            "name": "rully",
+            "id": 473
+          },
+          {
+            "identityNumber": "56544447",
+            "identityType": "KTP",
+            "name": "trisna",
+            "id": 474
+          }
+        ],
+        "startFlight": "2017-01-20T00:00:00Z",
+        "status": "CANCEL_ORDER",
+        "tripType": "SINGLE_TRIP"
+      },
+      "customer": {
+        "firstName": "Rully Winata",
+        "id": 11,
+        "profilePicture": "profile/776a1e0d-87b3-4db1-a130-75809f210267.jpg",
+        "username": "rugz33@gmail.com"
+      },
+      "id": 422,
+      "number": "1001178115406874",
+      "orderDate": "2017-01-10T13:24:21.498Z",
+      "orderStatus": "CANCELED",
+      "orderType": "CHARTER",
+      "payment": {
+        "amount": 9296166,
+        "amountAfterDiscount": 9296166,
+        "discount": 0,
+        "pricings": [
+          {
+            "amountType": "PERCENTAGE",
+            "pricingLevel": 1,
+            "pricingName": "TAX",
+            "pricingValue": 10.00,
+            "amount": 929617,
+            "id": 392
+          }
+        ],
+        "status": "CREATED",
+        "subTotal": 9296166,
+        "totalAmount": 10225783,
+        "totalPricing": 929617
+      }
+    },
+    {
+      "charter": {
+        "aircraft": {
+          "aircraftType": "MID_SIZE_JET",
+          "description": "GULFStREAM",
+          "model": "Gulfstream 550",
+          "registrationNumber": "PK-NOW",
+          "yearOfMake": 2012,
+          "code": "EE19KXF425",
+          "id": 25
+        },
+        "contactPerson": {
+          "email": "rugz33@gmail.com",
+          "name": "Rully Winata",
+          "phone": "6285722530233"
+        },
+        "daysCharter": 1,
+        "endFlight": "2017-01-06T00:00:00Z",
+        "legs": [
+          {
+            "flightDate": "2017-01-06T16:02:00Z",
+            "legNumber": 1,
+            "destinationAirport": {
+              "id": 21004,
+              "country": "Indonesia",
+              "iataCode": "DPS",
+              "icaoCode": "WADD",
+              "municipality": "Denpasar-Bali Island",
+              "name": "Ngurah Rai (Bali) International Airport",
+              "region": "Bali"
+            },
+            "legType": "TRIP_LEG",
+            "originAirport": {
+              "id": 14272,
+              "country": "Indonesia",
+              "iataCode": "HLP",
+              "icaoCode": "WIHH",
+              "municipality": "Jakarta",
+              "name": "Halim Perdanakusuma International Airport",
+              "region": "Jakarta Raya"
+            }
+          }
+        ],
+        "localTimeGmt": 7,
+        "passengers": [
+          {
+            "identityNumber": "3838383",
+            "identityType": "KTP",
+            "name": "trisna",
+            "id": 452
+          },
+          {
+            "identityNumber": "28282882",
+            "identityType": "KTP",
+            "name": "rully",
+            "id": 451
+          }
+        ],
+        "startFlight": "2017-01-06T00:00:00Z",
+        "status": "CANCEL_ORDER",
+        "tripType": "SINGLE_TRIP"
+      },
+      "customer": {
+        "firstName": "Rully Winata",
+        "id": 11,
+        "profilePicture": "profile/776a1e0d-87b3-4db1-a130-75809f210267.jpg",
+        "username": "rugz33@gmail.com"
+      },
+      "id": 401,
+      "number": "0901172116390507",
+      "orderDate": "2017-01-09T16:22:24.795Z",
+      "orderStatus": "CANCELED",
+      "orderType": "CHARTER",
+      "payment": {
+        "amount": 344583050,
+        "amountAfterDiscount": 344583050,
+        "discount": 0,
+        "pricings": [],
+        "status": "CREATED",
+        "subTotal": 344583050,
+        "totalAmount": 344583050,
+        "totalPricing": 0
+      }
+    },
+    {
+      "charter": {
+        "aircraft": {
+          "aircraftType": "MID_SIZE_JET",
+          "description": "fal con",
+          "model": "FALCON 7X",
+          "registrationNumber": "PK-YES",
+          "yearOfMake": 2011,
+          "code": "BQ4RY9RS24",
+          "id": 24
+        },
+        "contactPerson": {
+          "email": "rugz33@gmail.com",
+          "name": "Rully Winata",
+          "phone": "6285722530233"
+        },
+        "daysCharter": 1,
+        "endFlight": "2017-01-20T00:00:00Z",
+        "legs": [
+          {
+            "flightDate": "2017-01-20T16:02:00Z",
+            "legNumber": 1,
+            "destinationAirport": {
+              "id": 21004,
+              "country": "Indonesia",
+              "iataCode": "DPS",
+              "icaoCode": "WADD",
+              "municipality": "Denpasar-Bali Island",
+              "name": "Ngurah Rai (Bali) International Airport",
+              "region": "Bali"
+            },
+            "legType": "TRIP_LEG",
+            "originAirport": {
+              "id": 14272,
+              "country": "Indonesia",
+              "iataCode": "HLP",
+              "icaoCode": "WIHH",
+              "municipality": "Jakarta",
+              "name": "Halim Perdanakusuma International Airport",
+              "region": "Jakarta Raya"
+            }
+          }
+        ],
+        "localTimeGmt": 7,
+        "passengers": [
+          {
+            "identityNumber": "38383838383",
+            "identityType": "KTP",
+            "name": "trisna",
+            "id": 472
+          },
+          {
+            "identityNumber": "2727273",
+            "identityType": "KTP",
+            "name": "rully",
+            "id": 471
+          }
+        ],
+        "startFlight": "2017-01-20T00:00:00Z",
+        "status": "ORDERED",
+        "tripType": "SINGLE_TRIP"
+      },
+      "customer": {
+        "firstName": "Rully Winata",
+        "id": 11,
+        "profilePicture": "profile/776a1e0d-87b3-4db1-a130-75809f210267.jpg",
+        "username": "rugz33@gmail.com"
+      },
+      "id": 421,
+      "number": "0901175411336030",
+      "orderDate": "2017-01-09T21:50:46.369Z",
+      "orderStatus": "CREATED",
+      "orderType": "CHARTER",
+      "payment": {
+        "amount": 280962814,
+        "amountAfterDiscount": 280962814,
+        "discount": 0,
+        "pricings": [
+          {
+            "amountType": "PERCENTAGE",
+            "pricingLevel": 1,
+            "pricingName": "TAX",
+            "pricingValue": 10.00,
+            "amount": 28096281,
+            "id": 391
+          }
+        ],
+        "status": "CREATED",
+        "subTotal": 280962814,
+        "totalAmount": 309059095,
+        "totalPricing": 28096281
+      }
     }
   ]
+}
+
+///////////////
+
+
+{
+"count": 1,
+"data": [
+{
+"aircraftType": "ULTRA_LONG_RANGE",
+"code": "TR4BXSPL5",
+"id": 5,
+"images": [],
+"operator":
+{
+"name": "bbb",
+"code": "GQZ336",
+"id": 6
+},
+"basePrice": 1,
+"description": "test",
+"marginPrice": 1,
+"maxPassengers": 12,
+"maxRangeKm": 1.0,
+"maxRangeNm": 1.0,
+"model": "AAA",
+"registrationNumber": "BBB",
+"safetyRating": "test",
+"speedKmh": 12.0,
+"speedKts": 12.0,
+"status": "INACTIVE",
+"yearOfMake": 1989,
+"amenities": [],
+"base":
+{
+"id": 5,
+"country": "Indonesia",
+"iataCode": "HLP",
+"icaoCode": "WIHH",
+"municipality": "Jakarta",
+"name": "Halim Perdanakusuma International Airport",
+"region": "Jakarta Raya"
+},
+}
+]
 }

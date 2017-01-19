@@ -21,7 +21,6 @@ export default Ember.Component.extend(RegisterAsComponent, {
         active: this.get('active')
       };
 
-      console.log('send Action "applyFilter"')
       this.sendAction('applyFilter', filter);
     }
   }

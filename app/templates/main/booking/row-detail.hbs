@@ -1,30 +1,177 @@
 <td colspan="2" style="background: #EEE;"></td>
-<td colspan="2" style="text-align: center;">
-{{pw-image default="images/customer.png" source=data.profilePicture style="width: 60%;"}}
-</td>
-<td colspan="3">
-    <table class="pw-table" style="width: auto;">
+<td colspan="6">
+    <table class="pw-table">
+        <thead>
+        <tr>
+            <th colspan="3">Customer</th>
+        </tr>
+        </thead>
         <tbody>
         <tr>
+            <td rowspan="6" style="text-align: center;">
+              {{pw-image default="images/customer.png" source=data.customer.profilePicture style="width: 100px;"}}
+            </td>
+            <td>User Name :</td>
+            <td>{{data.customer.username}}</td>
+        </tr>
+        <tr>
+            <td>Name :</td>
+            <td>{{data.customer.firstName}} {{data.customer.lastName}}</td>
+        </tr>
+        <tr>
             <td>Identity Number :</td>
-            <td>{{data.identityType}} {{data.identityNumber}} </td>
+            <td>{{data.customer.identityType}} {{data.customer.identityNumber}}</td>
         </tr>
         <tr>
             <td>Address :</td>
             <td>
-              {{data.address.name}}<br/>
-              {{data.address.point.city.name}} &nbsp;
-              {{data.address.point.province.name}}<br/>
-              {{data.address.zipCode}}
+              {{data.customer.address.name}}<br/>
+              {{data.customer.address.point.city.name}} &nbsp;
+              {{data.customer.address.point.province.name}}<br/>
+              {{data.customer.address.zipCode}}
             </td>
         </tr>
         <tr>
             <td>Lat/Long :</td>
             <td>
-              {{data.address.point.latitude}},
-              {{data.address.point.longitude}}
+              {{data.customer.address.point.latitude}},
+              {{data.customer.address.point.longitude}}
             </td>
         </tr>
         </tbody>
     </table>
+
+    <table class="pw-table">
+        <thead>
+        <tr>
+            <th colspan="3">Aircraft</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Code :</td>
+            <td>{{data.charter.aircraft.code}}</td>
+        </tr>
+        <tr>
+            <td>Registration Number :</td>
+            <td>{{data.charter.aircraft.registrationNumber}}</td>
+        </tr>
+        <tr>
+            <td>Aircraft Type :</td>
+            <td>{{data.charter.aircraft.aircraftType}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{data.charter.aircraft.description}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="pw-table">
+        <thead>
+        <tr>
+            <th colspan="3">Charter</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Days Charter :</td>
+            <td>{{data.charter.daysCharter}} Days {{data.charter.tripType}}</td>
+        </tr>
+
+        <tr>
+            <td>End Flight :</td>
+            <td>
+              {{moment-format data.endFlight 'DD MMMM YYYY hh:mm:ss'}} GMT+{{data.charter.localTimeGmt}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="pw-table">
+        <thead>
+        <tr>
+            <th colspan="5">Legs</th>
+        </tr>
+        <tr>
+            <th>No</th>
+            <th>Flight Date</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Leg Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each data.charter.legs as |leg index|}}
+            <tr>
+                <td>{{add index 1 }}.</td>
+                <td>{{leg.flightDate}}</td>
+                <td>
+                  {{leg.originAirport.icaoCode}}<br/>
+                  {{leg.originAirport.name}}<br/>
+                  {{leg.originAirport.iataCode}}<br/>
+                  {{leg.originAirport.municipality}}<br/>
+                  {{leg.originAirport.region}}<br/>
+                  {{leg.originAirport.country}}
+                </td>
+                <td>
+                  {{leg.destinationAirport.icaoCode}}<br/>
+                  {{leg.destinationAirport.name}}<br/>
+                  {{leg.destinationAirport.iataCode}}<br/>
+                  {{leg.destinationAirport.municipality}}<br/>
+                  {{leg.destinationAirport.region}}<br/>
+                  {{leg.destinationAirport.country}}
+                </td>
+                <td>{{leg.legType}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+
+    <table class="pw-table">
+        <thead>
+        <tr>
+            <th colspan="3">Payment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="2">Amount</td>
+            <td style="text-align: right;">{{data.payment.amount}}</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">Discount</td>
+            <td style="text-align: right;">{{data.payment.discount}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">Discount</td>
+            <td style="text-align: right;">{{data.payment.amountAfterDiscount}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">Pricing</td>
+            <td style="text-align: right;">{{data.payment.totalPricing}}</td>
+        </tr>
+
+        {{#each data.payment.pricings as |pricing|}}
+            <tr>
+                <td style="width: 10px;">&nbsp;</td>
+                <td>- &nbsp;{{pricing.pricingName}}</td>
+                <td style="text-align: right;">{{pricing.amount}}</td>
+            </tr>
+        {{/each}}
+
+        <tr>
+            <td colspan="2">Sub Total</td>
+            <td style="text-align: right;">{{data.payment.subTotal}}</td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2">Total</td>
+            <td style="text-align: right;">{{data.payment.totalAmount}}</td>
+        </tr>
+        </tbody>
+    </table>
 </td>
+<td style="background: #EEE;"></td>

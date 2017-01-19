@@ -11,23 +11,67 @@
     </button>
 </td>
 <td>
-  {{#if data.isActive}}
-      <span class="pw-label pw-label-success pw-label-xs">A</span>
-  {{else}}
-      <span class="pw-label pw-label-danger pw-label-xs">I&nbsp;</span>
-  {{/if}}
 
-  {{#if data.isBlocked}}
-      <span class="pw-label pw-label-amethyst pw-label-xs">B</span>
+  {{#if (eq data.payment.status "CREATED")}}
+      <span class="pw-label pw-label-primary pw-label-xs">C</span>
   {{else}}
-      <span class="pw-label pw-label-purple pw-label-xs">U</span>
+    {{#if (eq data.payment.status "WAITING_CONFIRMATION")}}
+        <span class="pw-label pw-label-warning pw-label-xs">W</span>
+    {{else}}
+      {{#if (eq data.payment.status "PAID")}}
+          <span class="pw-label pw-label-success pw-label-xs">P</span>
+      {{/if}}
+    {{/if}}
   {{/if}}
 </td>
-<td>{{data.username}}</td>
-<td>{{data.firstName}} &nbsp; {{data.lastName}}</td>
-<td>{{data.phoneNumber}}</td>
 <td>
-    <button class="btn btn-primary btn-xs" {{action "click"  "setStatus" data}}>
-        set status
+
+  {{#if (eq data.orderStatus "CREATED")}}
+      <span class="pw-label pw-label-primary pw-label-xs">C</span>
+  {{else}}
+    {{#if (eq data.orderStatus "CANCELED")}}
+        <span class="pw-label pw-label-danger pw-label-xs">A</span>
+    {{else}}
+      {{#if (eq data.orderStatus "PAID")}}
+          <span class="pw-label pw-label-success pw-label-xs">P</span>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq data.orderType "CHARTER")}}
+      <span class="pw-label pw-label-primary pw-label-xs">C</span>
+  {{else}}
+    {{#if (eq data.orderType "DEAL")}}
+        <span class="pw-label pw-label-danger pw-label-xs">D</span>
+    {{else}}
+      {{#if (eq data.orderType "SHUTTLE")}}
+          <span class="pw-label pw-label-success pw-label-xs">S</span>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+</td>
+<td>{{data.number}}</td>
+<td>
+
+    {{#if data.orderDate }}
+      {{moment-format data.orderDate 'DD MMMM YYYY HH:mm:ssZ'}}
+    {{/if}}
+</td>
+<td>
+  {{data.customer.username}}<br/>
+  {{data.customer.firstName}} &nbsp; {{data.customer.lastName}}
+</td>
+<td>
+  {{data.charter.aircraft.registrationNumber}} <br/>
+  {{data.charter.aircraft.aircraftType}}
+</td>
+<td>
+    <button class="btn btn-success btn-xs" {{action "click"  "confirmPayment" data}}>
+        confirm payment
+    </button>
+
+    <button class="btn btn-danger btn-xs" {{action "click"  "cancelBooking" data}}>
+        cancel
     </button>
 </td>

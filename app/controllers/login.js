@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Constant from '../utils/constants';
+import JsonUtil from '../utils/json-util';
 
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
@@ -29,7 +30,7 @@ export default Ember.Controller.extend({
 
       var promise = this.get('requestSender').ajaxPost(
         'authenticate',
-        JSON.stringify(param),
+        JsonUtil.toJson(param),
         header
       );
 
@@ -48,7 +49,6 @@ export default Ember.Controller.extend({
       }, function (reason) {
         that.set('hasError', true);
         that.set('success', false);
-        console.log(reason.xhr.status);
         if (reason.xhr.status >= 500 || reason.xhr.status === 0) {
           that.set('errorMessage', 'Can not connect to server');
         } else {

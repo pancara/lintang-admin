@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Constant from '../utils/constants';
+import JsonUtil from '../utils/json-util';
 
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
@@ -23,7 +24,7 @@ export default Ember.Controller.extend({
       };
       let that = this;
       let url = 'password/forget';
-      this.get('requestSender').ajaxPost(url, JSON.stringify(param), header)
+      this.get('requestSender').ajaxPost(url, JsonUtil.toJson(param), header)
         .then(function (json) {
           that.set('hasError', false);
           that.set('success', true);

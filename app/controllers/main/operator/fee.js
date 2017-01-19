@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
@@ -28,7 +29,7 @@ export default Ember.Controller.extend({
 
       let that = this;
       let url = 'operator/fee/' + this.get('operator').id;
-      this.get('request-sender').ajaxPut(url, JSON.stringify(param), header)
+      this.get('request-sender').ajaxPut(url, JsonUtil.toJson(param), header)
         .then(function (json) {
           let prop = {
             errorMessage: 'Fee saved',

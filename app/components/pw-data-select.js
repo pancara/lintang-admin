@@ -21,7 +21,6 @@ export default Ember.Component.extend({
       //});
       //
       //let target = event;
-      //console.log(target);
     },
 
     refresh() {

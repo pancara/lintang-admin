@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import JsonUtil from '../utils/json-util';
 
 export default Ember.Service.extend({
   salt: 'lintang-admin',
@@ -44,7 +45,7 @@ export default Ember.Service.extend({
   },
 
   save(key, value) {
-    var jsonText = JSON.stringify(value);
+    var jsonText = JsonUtil.toJson(value);
     localStorage.setItem(key, this.encrypt(jsonText));
   },
 

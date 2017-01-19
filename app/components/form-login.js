@@ -8,11 +8,9 @@ export default Ember.Component.extend({
   rememberMe: false,
 
   keydown() {
-    console.log('key down..');
   },
   actions: {
     keyDown() {
-      console.log('key down');
     },
     submit() {
       let username= this.get('username');

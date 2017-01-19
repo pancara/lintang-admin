@@ -1,0 +1,34 @@
+<td>{{index}}.</td>
+<td>
+    <button class="btn btn-xs" {{action "toggleDetail"}}>
+      {{#unless detailVisible }}
+        {{fa-icon "plus" }}
+      {{/unless}}
+      {{#if detailVisible }}
+        {{fa-icon "minus" }}
+      {{/if}}
+    </button>
+</td>
+<td>
+  {{#if (eq data.status "ACTIVE")}}
+      <span class="pw-label pw-label-success pw-label-xs">A</span>
+  {{else}}
+      <span class="pw-label pw-label-danger pw-label-xs">I&nbsp;</span>
+  {{/if}}
+</td>
+
+<td>{{data.code}}</td>
+<td>{{data.amountType}}</td>
+<td>{{data.kuota}}</td>
+<td>{{data.voucherAmount}}</td>
+<td>{{data.voucherType}}</td>
+<td>{{data.order.number}}</td>
+<td>
+    <button class="btn btn-primary btn-xs" {{action "click"  "editVoucher" data}}>
+        edit
+    </button>
+
+    <button class="btn btn-danger btn-xs" {{action "click"  "deleteVoucher" data}}>
+        delete
+    </button>
+</td>

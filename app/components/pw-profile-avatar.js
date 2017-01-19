@@ -8,7 +8,6 @@ export default Ember.Component.extend({
   tabindex: 0,
 
   focusOut() {
-    console.log('focus out');
     this.set('shownMenu', false);
   },
 

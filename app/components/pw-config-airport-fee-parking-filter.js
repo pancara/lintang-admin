@@ -23,7 +23,6 @@ export default Ember.Component.extend({
         aircraftType: this.get('aircraftType')
       };
 
-      console.log('send Action "applyFilter"')
       this.sendAction('applyFilter', filter);
     },
     selectAircraftType(aircraftType) {

@@ -52,7 +52,7 @@ export default Ember.Controller.extend({
     },
 
     add() {
-      this.get('operatorFormCtrl').reset();
+      this.get('operatorFormCtrl').resetForm();
       this.transitionToRoute('main.operator.form');
     },
 

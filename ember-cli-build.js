@@ -2,12 +2,12 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
     fingerprint: {
-      enabled: false,
-      exclude: ['images/aircraft', 'images/mock']
+      enabled: true,
+      exclude: ['fonts', 'images', 'images/aircraft', 'images/mock']
     }
   });
 

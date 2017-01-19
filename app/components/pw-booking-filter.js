@@ -5,25 +5,20 @@ export default Ember.Component.extend(RegisterAsComponent, {
   classNames: ['panel', 'panel-default', 'panel-filter'],
   classNameBindings: ['shown'],
   shown: true,
-  userName: null,
-  customerName: null,
-  phone: null,
-  blocked: false,
-  active: true,
+  orderNumber: null,
+  bookingStatus: null,
+  customerMail: null,
+  operatorCode: null,
 
   actions: {
     applyFilter() {
-      let aircraft = this.get('aircraft');
-      let customer = this.get('customer');
-      let operator = this.get('operator');
 
       var filter = {
         orderNumber: this.get('orderNumber'),
         bookingStatus: this.get('bookingStatus'),
         orderType: this.get('orderType'),
-        aircraftId: aircraft == null ? null : aircraft.id,
-        customerId: customer == null ? null : customer.id,
-        operatorId: operator == null ? null : operator.id
+        customerMail: this.get('customerMail'),
+        operatorCode: this.get('operatorCode')
       };
 
       this.sendAction('applyFilter', filter);

@@ -2,6 +2,8 @@ import Ember from 'ember'
 import Administrator from '../../objects/administrator';
 import DataFactory from'../../utils/data-factory';
 
+import JsonUtil from '../../utils/json-util';
+
 export default Ember.Controller.extend({
   editMode: false,
   formData: Administrator.create(),
@@ -32,11 +34,10 @@ export default Ember.Controller.extend({
         'Authorization': that.get('securityService').getAuthBearer()
       };
 
-      this.get('requestSender').ajaxPut('admin/profile', JSON.stringify(params), header).then(function (json) {
+      this.get('requestSender').ajaxPut('admin/profile', JsonUtil.toJson(params), header).then(function (json) {
         that.get('profile').setProperties(that.get('formData'));
         that.set('editMode', false);
       }, function () {
-        console.log('error..');
       });
 
     },

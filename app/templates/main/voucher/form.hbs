@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+          {{#if error}}
+              <div class="alert alert-danger" role="alert">
+                {{errorMessage}}
+              </div>
+          {{/if}}
+
+          {{#if success}}
+              <div class="alert alert-success" role="alert">
+                {{errorMessage}}
+              </div>
+          {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Code</span></div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=code}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"><span class="field">Voucher Type</span></div>
+        <div class="col-lg-3">
+            <select class="form-control" onchange={{action "selectVoucherType" value="target.value"}}>
+                <option>-</option>
+              {{#each voucherTypes as |voucherTypeOption|}}
+                  <option value={{voucherTypeOption}} selected={{eq voucherType voucherTypeOption}}>{{voucherTypeOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+
+
+        <div class="col-lg-2"><span class="field">Status</span></div>
+        <div class="col-lg-3">
+            <select class="form-control" onchange={{action "selectVoucherStatus" value="target.value"}}>
+                <option>-</option>
+              {{#each voucherStatuses as |voucherStatusOption|}}
+                  <option value={{voucherStatusOption}} selected={{eq status voucherStatusOption}}>{{voucherStatusOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+
+  {{#if (eq voucherType "DISCOUNT_VOUCHER")}}
+      <div class="row">
+          <div class="col-lg-2"><span class="field">Kuota</span></div>
+          <div class="col-lg-3">
+            {{input class="form-control" value=kuota type="number"}}
+          </div>
+
+          <div class="col-lg-2"><span class="field">Voucher Amount</span></div>
+          <div class="col-lg-3">
+            {{input class="form-control" value=voucherAmount type="number"}}
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-lg-2"><span class="field">Max Voucher Amount</span></div>
+          <div class="col-lg-3">
+            {{input class="form-control" value=maximumVoucherAmount type="number"}}
+          </div>
+
+          <div class="col-lg-2"><span class="field">Min Payment Amount</span></div>
+          <div class="col-lg-3">
+            {{input class="form-control" value=minimumPaymentAmount type="number"}}
+          </div>
+      </div>
+
+
+      <div class="row">
+          <div class="col-lg-2"><span class="field">Amount Type</span></div>
+          <div class="col-lg-3">
+              <select class="form-control" onchange={{action "selectAmountType" value="target.value"}}>
+                  <option>-</option>
+                {{#each voucherAmountTypes as |amountTypeOption|}}
+                    <option value={{amountTypeOption}} selected={{eq amountType amountTypeOption}}>{{amountTypeOption}}</option>
+                {{/each}}
+              </select>
+          </div>
+      </div>
+
+
+  {{else}}
+      <div class="row">
+          <div class="col-lg-2"><span class="field">Order</span></div>
+          <div class="col-lg-3">
+              <div class="input-group">
+                {{input class="form-control" value=orderNumber disabled=true}}
+                  <span class="input-group-addon" {{action "showBookingSearch"}}>
+                    {{fa-icon "search"}}
+                  </span>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-3">
+              <span class="value"> {{booking.charter.aircraft.registrationNumber}} {{booking.charter.aircraft.aircraftType}}</span> <br/>
+              <span class="value">{{booking.customer.firstName}} {{booking.customer.lastName}}</span><br/>
+              {{#if booking.orderDate}}
+                  <span class="value"> {{moment-format booking.orderDate 'DD MMMM YYYY hh:mm'}}</span><br/>
+              {{/if}}
+          </div>
+      </div>
+
+    {{#if inSearchingBooking}}
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              {{pw-booking-search close=(action "hideBookingSearch") selectBooking=(action "selectBooking")}}
+            </div>
+        </div>
+    {{/if}}
+  {{/if}}
+
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-2">
+            <button class="btn btn-success btn-sm" {{action "save"}}>
+              {{fa-icon "check"}} &nbsp; Save
+            </button>
+            <button class="btn btn-danger btn-sm" {{action "cancel"}}>
+              {{fa-icon "remove"}} &nbsp; Cancel
+            </button>
+        </div>
+    </div>
+</div>

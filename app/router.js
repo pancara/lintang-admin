@@ -49,6 +49,10 @@ Router.map(function () {
       this.route('form');
     });
 
+    this.route('voucher', function () {
+      this.route('form');
+    });
+
     this.route('operator-user', function () {
       this.route('add-user');
       this.route('update-profile');
@@ -63,6 +67,12 @@ Router.map(function () {
       this.route('images');
     });
 
+
+    this.route('administrator', function () {
+      this.route('form');
+      this.route('profile');
+      this.route('role');
+    });
 
   });
   this.route('logout');
