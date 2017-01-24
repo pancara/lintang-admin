@@ -1,6 +1,7 @@
 import Ember from 'ember'
 import Operator from '../../../objects/operator';
 import JsonUtil from '../../../utils/json-util';
+import UnitUtil from '../../../utils/unit-util';
 
 
 export default Ember.Controller.extend({
@@ -27,6 +28,8 @@ export default Ember.Controller.extend({
 
   operatorSearchMode: false,
   airportSearchMode: false,
+
+  shownSimulationPanel: false,
 
   afterRender() {
     this.set('genders', this.get('dataStub').getGenders());
@@ -120,6 +123,11 @@ export default Ember.Controller.extend({
     let that = this;
 
     let keyword = this.get('keywordAirport');
+    if (keyword == null || keyword.length === 0) {
+      this.get('uiService').showMessage('Keyword is empty');
+      return;
+    }
+
     let param = {
       limit: paging.get('rowPerPage'),
       page: paging.get('current')
@@ -197,7 +205,6 @@ export default Ember.Controller.extend({
         "id": base.id
       }
     };
-
 
     var header = {
       Authorization: this.get('securityService').getAuthBearer()
@@ -315,15 +322,27 @@ export default Ember.Controller.extend({
 
     },
 
-    speedKmhChange() {
+    speedKtsChange() {
+      let speedKts = this.get('speedKts');
+      this.set('speedKmh', UnitUtil.knotToKm(speedKts, 2));
     },
 
-    speedKtsChange() {
+    speedKmhChange() {
+      let speedKmh = this.get('speedKmh');
+      this.set('speedKts', UnitUtil.kmToKnot(speedKmh, 2));
     },
 
     maxRangeNmChange() {
+      let maxRangeNm = this.get('maxRangeNm');
+      this.set('maxRangeKm', UnitUtil.knotToKm(maxRangeNm, 2));
     },
     maxRangeKmChange() {
+      let maxRangeKm = this.get('maxRangeKm');
+      this.set('maxRangeNm', UnitUtil.kmToKnot(maxRangeKm, 2));
+    },
+
+    toggleSimulationPanel() {
+      this.toggleProperty('shownSimulationPanel');
     }
 
   }

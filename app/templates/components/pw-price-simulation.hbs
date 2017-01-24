@@ -1,0 +1,194 @@
+<div class="panel-body">
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Aircraft Type</span>
+        </div>
+        <div class="col-lg-6">
+            <span class="value">{{aircraftType}}</span>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Max Range Nm</span>
+        </div>
+        <div class="col-lg-3">
+            <span class="value">{{maxRangeNm}}</span>
+        </div>
+
+        <div class="col-lg-3">
+            <span class="field">Speed Kts</span>
+        </div>
+        <div class="col-lg-3">
+            <span class="value">{{speedKts}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Base Price</span>
+        </div>
+        <div class="col-lg-3">
+            <span class="value">{{basePrice}}</span>
+        </div>
+        <div class="col-lg-3">
+            <span class="field">Margin Price</span>
+        </div>
+        <div class="col-lg-3">
+            <span class="value">{{marginPrice}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Base Airport</span>
+        </div>
+        <div class="col-lg-9">
+            <span class="value">{{baseAirport.icaoCode}}</span>
+            <span class="value">{{baseAirport.name}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Special Price</span>
+        </div>
+        <div class="col-lg-2">
+          {{input class="form-control" value=specialPrice type="number"}}
+        </div>
+        <div class="col-lg-1"><span class="field">%</span></div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Origin</span>
+        </div>
+        <div class="col-lg-8">
+            <span class="value">{{origin.icaoCode}}</span>
+            <span class="value">{{origin.name}}</span>
+        </div>
+        <div class="col-lg-1">
+          {{#if (not selectingOrigin)}}
+              <button class="btn btn-xs pull-right" {{action "startSelectingOrigin"}}>select</button>
+          {{/if}}
+        </div>
+    </div>
+
+  {{#if selectingOrigin}}
+      <div class="row">
+          <div class="col-lg-3">
+          </div>
+          <div class="col-lg-9">
+              <button class="btn btn-xs pull-right" {{action "endSelectingOrigin"}}>
+                {{fa-icon "remove"}}
+              </button>
+
+              <div class="form-inline" style="margin-bottom: 5px;">
+                  <div class="form-group">
+                    {{input class="form-control" value=keywordOrigin placeholder="airport name"}}
+                      &nbsp;
+                      <button class="btn btn-sm pull-right" {{action "doSearchOrigin"}}>Search</button>
+                  </div>
+              </div>
+              <div>
+                {{pw-table data=origins
+                headerTemplate="components/airport/header"
+                footerTemplate="components/airport/footer"
+                masterTemplate="components/airport/row"
+                detailTemplate="components/airport/row-detail"
+                isZebra=false
+                select=(action "selectOrigin")
+                }}
+              </div>
+              <div>
+                {{pw-paging register-as=pagingOrigin rowPerPage=10 refresh=(action "refreshOrigin")}}
+              </div>
+          </div>
+      </div>
+  {{/if}}
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Destination</span>
+        </div>
+        <div class="col-lg-8">
+            <span class="value">{{destination.icaoCode}}</span>
+            <span class="value">{{destination.name}}</span>
+        </div>
+        <div class="col-lg-1">
+          {{#if (not selectingDestination)}}
+              <button class="btn btn-xs pull-right" {{action "startSelectingDestination"}}>select</button>
+          {{/if}}
+        </div>
+
+    </div>
+
+  {{#if selectingDestination}}
+      <div class="row">
+          <div class="col-lg-3">
+          </div>
+          <div class="col-lg-9">
+              <button class="btn btn-xs pull-right" {{action "endSelectingDestination"}}>
+                {{fa-icon "remove"}}
+              </button>
+
+              <div class="form-inline" style="margin-bottom: 5px;">
+                  <div class="form-group">
+                    {{input class="form-control" value=keywordDestination placeholder="airport name"}}
+                      &nbsp;
+                      <button class="btn btn-sm pull-right" {{action "doSearchDestination"}}>Search</button>
+                  </div>
+              </div>
+              <div>
+                {{pw-table data=destinations
+                headerTemplate="components/airport/header"
+                footerTemplate="components/airport/footer"
+                masterTemplate="components/airport/row"
+                detailTemplate="components/airport/row-detail"
+                isZebra=false
+                select=(action "selectDestination")
+                }}
+              </div>
+              <div>
+                {{pw-paging register-as=pagingDestination rowPerPage=10 refresh=(action "refreshDestination")}}
+              </div>
+          </div>
+      </div>
+  {{/if}}
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field"></span>
+        </div>
+        <div class="col-lg-9">
+            <button class="btn btn-md btn-warning" {{action "simulatePrice"}}>
+              {{fa-icon "cog"}}
+                Calculate
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Price</span>
+        </div>
+        <div class="col-lg-3">
+            <span class="value">
+              {{format-number price precision=0}}
+            </span>
+        </div>
+        <div class="col-lg-3" style="text-align: right;">
+            <span class="field">Time</span>
+        </div>
+        <div class="col-lg-3">
+            <span class="value">{{duration-format time 'minutes'}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <span class="field">Fuel Stop</span>
+        </div>
+        <div class="col-lg-2">
+            <span class="value">{{fuelStop}}</span>
+        </div>
+    </div>
+</div>

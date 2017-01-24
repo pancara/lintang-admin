@@ -132,12 +132,12 @@
     <div class="row">
         <div class="col-lg-2"><span class="field">Speed Kts</span></div>
         <div class="col-lg-2">
-          {{input class="form-control" value=speedKts type="number" change=speedKtsChange}}
+          {{input class="form-control" value=speedKts type="number" change=(action "speedKtsChange")}}
         </div>
 
         <div class="col-lg-2"><span class="field">Speed Kmh</span></div>
         <div class="col-lg-2">
-          {{input class="form-control" value=speedKmh type="number" change=speedKmhChange}}
+          {{input class="form-control" value=speedKmh type="number" change=(action "speedKmhChange")}}
         </div>
 
     </div>
@@ -145,12 +145,12 @@
     <div class="row">
         <div class="col-lg-2"><span class="field">Max Range in Nm</span></div>
         <div class="col-lg-2">
-          {{input class="form-control" value=maxRangeNm type="number" change=maxRangeNmChange}}
+          {{input class="form-control" value=maxRangeNm type="number" change=(action "maxRangeNmChange")}}
         </div>
 
         <div class="col-lg-2"><span class="field">Max Range in Km</span></div>
         <div class="col-lg-2">
-          {{input class="form-control" value=maxRangeKm type="number" change=maxRangeKmChange}}
+          {{input class="form-control" value=maxRangeKm type="number" change=(action "maxRangeKmChange")}}
         </div>
     </div>
 
@@ -223,6 +223,42 @@
           </div>
       </div>
   {{/if}}
+
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <button class="btn btn-sm" {{action "toggleSimulationPanel"}}>
+              {{#if shownSimulationPanel }}
+                {{fa-icon "caret-up"}}
+                  &nbsp; Hide Price Simulation
+              {{else}}
+                {{fa-icon "caret-down"}}
+                  &nbsp; Show Price Simulation
+              {{/if}}
+
+            </button>
+            {{aircarftType}}
+        </div>
+    </div>
+
+  {{#if shownSimulationPanel}}
+      <div class="row">
+          <div class="col-lg-2"><span class="field">
+        </span></div>
+          <div class="col-lg-8">
+            {{pw-price-simulation
+            aircraftType=aircraftType
+            speedKts=speedKts
+            maxRangeNm=maxRangeNm
+            basePrice=basePrice
+            marginPrice=marginPrice
+            baseAirport=airport
+            }}
+
+          </div>
+      </div>
+  {{/if}}
+
 
 
     <div class="row">

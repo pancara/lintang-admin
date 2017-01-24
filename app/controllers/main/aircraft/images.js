@@ -25,21 +25,23 @@ export default Ember.Controller.extend({
     this.set('success', false);
   },
 
+  retrieveAircraft() {
+    var header = {
+      Authorization: this.get('securityService').getAuthBearer()
+    };
+
+    let aircraft = this.get('aircraft');
+    let url = 'aircraft/' + aircraft.id;
+
+    let that = this;
+    this.get('request-sender').ajaxGet(url, null, header)
+      .then(function (json) {
+        that.set('aircraft', json);
+      }, function (reason) {
+      });
+  },
 
   actions: {
-    uploadImage() {
-      this.set('selectingAmenity', true);
-      let that = this;
-
-      Ember.run.later(this, function () {
-        let paging = that.get('paging');
-        if (paging != null) {
-          paging.addObserver('current', that, that.populateAmenities);
-        }
-        that.populateAmenities();
-      });
-    },
-
     deleteImage(image) {
       if (!this.get('uiService').confirm('Remove aircraft picture ?')) {
         return;
@@ -71,15 +73,20 @@ export default Ember.Controller.extend({
 
       this.get('requestSender').ajaxPut(url, null, header)
         .then(function (json) {
-          image.isMainImage = true;
-          this.get('uiService').showMessage('Aircraft main image changed');
+          Ember.set(image, 'isMainImage', true);
+          that.get('uiService').showMessage('Aircraft main image changed');
+          that.retrieveAircraft();
         }, function (reason) {
           that.get('uiService').showMessage('Set aircraft main image failed. [' + reason.xhr.responseText + ']')
         });
     },
 
     refresh() {
-      this.populateAmenities();
+      this.populateImages();
+    },
+
+    uploadImageCompleted() {
+      this.retrieveAircraft();
     }
   }
 });

@@ -35,7 +35,10 @@
                 {{/each}}
                 <tr>
                     <td></td>
-                    <td colspan="4">{{pw-upload url=(concat "aircraft/image/" aircraft.id)}}</td>
+                    <td colspan="4">{{pw-upload
+                    url=(concat "aircraft/image/" aircraft.id)
+                    uploadCompleted=(action "uploadImageCompleted")
+                    }}</td>
                 </tr>
                 </tbody>
              </table>

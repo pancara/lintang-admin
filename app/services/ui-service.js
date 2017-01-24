@@ -55,9 +55,9 @@ export default Ember.Service.extend({
     var messageBoxes = this.get('messageBoxes');
 
     // calc new message box position
-    var bottom = 0;
+    var top = 0;
     for (let m of messageBoxes) {
-      bottom += Ember.$(m).outerHeight() + 2;
+      top += Ember.$(m).outerHeight() + 2;
     }
 
 
@@ -73,7 +73,7 @@ export default Ember.Service.extend({
 
     Ember.$('body').append(msgBox);
     msgBox.css({
-      bottom: bottom
+      top: top
     });
     messageBoxes.push(msgBox);
 

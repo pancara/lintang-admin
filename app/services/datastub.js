@@ -106,7 +106,7 @@ export default Ember.Service.extend({
   },
 
   getBookingStatuses() {
-    return ['CREATED', 'CANCELED', 'PAID'];
+    return ['CREATED', 'CANCELED', 'PAID', 'CONFIRMED'];
   },
 
   getOrderTypes() {

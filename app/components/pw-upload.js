@@ -26,6 +26,7 @@ export default Ember.Component.extend(RegisterAsComponent, {
     uploadCompleted(e) {
       this.set('uploading', false);
       this.set('success', true);
+      this.sendAction('uploadCompleted');
     }
   }
 });
