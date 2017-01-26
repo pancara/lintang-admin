@@ -1,0 +1,19 @@
+<td>{{index}}.</td>
+<td>
+    <button class="btn btn-xs" {{action "toggleDetail"}}>
+      {{#unless detailVisible }}
+        {{fa-icon "plus" }}
+      {{/unless}}
+      {{#if detailVisible }}
+        {{fa-icon "minus" }}
+      {{/if}}
+    </button>
+</td>
+<td>{{data.airport.icaoCode}}</td>
+<td>{{data.airport.name}}</td>
+<td>{{data.aircraftType}}</td>
+<td>
+    <button class="btn btn-danger btn-xs" {{action "click"  "delete" data}}>
+        delete
+    </button>
+</td>

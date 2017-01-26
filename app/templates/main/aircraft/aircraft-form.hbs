@@ -88,19 +88,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-2">
-            <span class="field">Aircraft Type</span>
-        </div>
-        <div class="col-lg-3">
-            <select class="form-control" onchange={{action "selectAircraftType" value="target.value"}}>
-                <option>-</option>
-              {{#each aircraftTypes as |typeOption|}}
-                  <option value={{typeOption}} selected={{eq aircraftType typeOption}}>{{typeOption}}</option>
-              {{/each}}
-            </select>
-        </div>
-    </div>
 
     <div class="row">
         <div class="col-lg-2"><span class="field">Safety Rating</span></div>

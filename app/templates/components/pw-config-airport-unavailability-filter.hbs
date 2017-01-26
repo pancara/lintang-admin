@@ -1,0 +1,67 @@
+<div class="panel-heading">
+    <span>
+        {{fa-icon "filter"}} &nbsp; Filter
+    </span>
+</div>
+<div class="panel-body">
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Airport ICAO</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=icaoCode}}
+        </div>
+
+        <div class="col-lg-2">
+            <span class="field">Airport Name</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=airportName}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Municipality</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=municipality}}
+        </div>
+
+        <div class="col-lg-2">
+            <span class="field">Region</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=region}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <span class="field">Country</span>
+        </div>
+        <div class="col-lg-3">
+          {{input class="form-control" value=country}}
+        </div>
+
+        <div class="col-lg-2">
+            <span class="field">Aircraft Type</span>
+        </div>
+        <div class="col-lg-3">
+            <select class="form-control" onchange={{action "selectAircraftType" value="target.value"}}>
+                <option>-</option>
+              {{#each aircraftTypes as |typeOption|}}
+                  <option value={{typeOption}} selected={{eq aircraftType typeOption}}>{{typeOption}}</option>
+              {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 0 0 0 0;">
+        <div class="col-lg-6 col-lg-offset-2">
+            <button class="btn btn-primary btn-sm"{{action 'applyFilter'}}>{{fa-icon "filter"}} &nbsp; Apply
+                Filter
+            </button>
+        </div>
+    </div>
+</div>

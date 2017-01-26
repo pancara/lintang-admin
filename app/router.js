@@ -41,6 +41,10 @@ Router.map(function () {
       this.route('form');
     });
 
+    this.route('config-airport-unavailability', function () {
+      this.route('form');
+    });
+
     this.route('config-amenities', function () {
       this.route('form');
     });

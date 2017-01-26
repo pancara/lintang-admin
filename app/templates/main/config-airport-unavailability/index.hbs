@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pw-panel pw-panel-align-right">
+                <button class="btn btn-success btn-xs pull-left" {{action "add"}}>
+                  {{fa-icon "plus"}}&nbsp;
+                    Add
+                </button>
+
+                <button class="btn btn-xs" {{action "toggleFilter"}}>
+                  {{#if shownFilter }}
+                      Hide Filter &nbsp;
+                    {{fa-icon "caret-up"}}
+                  {{else}}
+                      Show Filter &nbsp;
+                    {{fa-icon "caret-down"}}
+                  {{/if}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-config-airport-unavailability-filter
+          register-as=filterPanel
+          shown=shownFilter
+          aircraftTypes=aircraftTypes
+          isZebra=true
+          applyFilter=(action "applyFilter")
+          }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          {{pw-table data=data
+          headerTemplate="main/config-airport-unavailability/header"
+          footerTemplate="main/config-airport-unavailability/footer"
+          masterTemplate="main/config-airport-unavailability/row"
+          detailTemplate="main/config-airport-unavailability/row-detail"
+          isZebra=false
+          delete=(action "delete")
+          }}
+
+          {{pw-paging register-as=paging refresh=(action "refresh")}}
+        </div>
+    </div>
+</div>
+

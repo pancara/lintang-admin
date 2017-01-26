@@ -27,9 +27,12 @@ export default Ember.Service.extend({
     let submenuConfigAirportFeeLanding = this.createMenuObject('main.config-airport-fee-landing', null, 'AIRPORT FEE LANDING', false, null);
     let submenuConfigAirportFeeParking = this.createMenuObject('main.config-airport-fee-parking', null, 'AIRPORT FEE PARKING', false, null);
     let submenuConfigPricing = this.createMenuObject('main.config-pricing', null, 'PRICING', false, null);
+    let submenuConfigAirportUnavailability = this.createMenuObject('main.config-airport-unavailability', null, 'AIRPORT UNAVAILABILITY', false, null);
 
     let mnuConfig = this.createMenuObject('main.config', 'wrench', 'CONFIG', true,
-      [submenuConfigDefault, submenuConfigAirportFeeLanding, submenuConfigAirportFeeParking, submenuConfigAmenities, submenuConfigPricing]);
+      [submenuConfigDefault, submenuConfigAirportFeeLanding, submenuConfigAirportFeeParking,
+        submenuConfigAmenities, submenuConfigPricing,
+        submenuConfigAirportUnavailability]);
 
     let menus = [mnuAircraft, mnuOperator, mnuBooking, mnuCustomer, mnuVoucher, mnuUsers, mnuConfig];
 
