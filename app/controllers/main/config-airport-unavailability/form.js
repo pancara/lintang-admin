@@ -5,6 +5,7 @@ import JsonUtil from '../../../utils/json-util';
 
 export default Ember.Controller.extend({
   securityService: Ember.inject.service('security-service'),
+  uiService: Ember.inject.service('ui-service'),
   config: null,
   airport: null,
   airportId: null,
@@ -119,10 +120,22 @@ export default Ember.Controller.extend({
     },
 
     save() {
+      let airport = this.get('airport');
+      if (airport == null) {
+        this.get('uiService').showMessage('Airport empty.');
+        return;
+      }
+
+      let aircraftType = this.get('aircraftType');
+      if (aircraftType == null || aircraftType.length ===0) {
+        this.get('uiService').showMessage('Aircraft type empty.');
+        return;
+      }
+
       let param = {
-        aircraftType: this.get('aircraftType'),
+        aircraftType: aircraftType,
         airport: {
-          id: this.get('airport').id
+          id: airport.id
         }
       };
 
