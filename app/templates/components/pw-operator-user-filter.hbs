@@ -29,7 +29,7 @@
         <div class="col-lg-2">
 
             <select class="form-control" onchange={{action "selectOperatorRole" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each operatorRoles as |roleOption|}}
                   <option value={{roleOption}}>{{roleOption}}</option>
               {{/each}}

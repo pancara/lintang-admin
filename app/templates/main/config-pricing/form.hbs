@@ -33,7 +33,7 @@
         <div class="col-lg-2"><span class="field">Pricing Level</span></div>
         <div class="col-lg-2">
             <select class="form-control" onchange={{action "selectPricingLevel" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each pricingLevels as |pricingLevelOption|}}
                   <option value={{pricingLevelOption}} selected={{eq pricingLevel pricingLevelOption}}>{{pricingLevelOption}}</option>
               {{/each}}
@@ -45,7 +45,7 @@
         <div class="col-lg-2"><span class="field">Amount Type</span></div>
         <div class="col-lg-2">
             <select class="form-control" onchange={{action "selectAmountType" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each pricingAmountTypes as |amountTypeOption|}}
                   <option value={{amountTypeOption}} selected={{eq amountType amountTypeOption}}>{{amountTypeOption}}</option>
               {{/each}}
@@ -65,7 +65,7 @@
         <div class="col-lg-2"><span class="field">Pricing Count Type</span></div>
         <div class="col-lg-4">
             <select class="form-control" onchange={{action "selectPricingCountType" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each pricingCountTypes as |pricingCountTypeOption|}}
                   <option value={{pricingCountTypeOption}} selected={{eq pricingCountType pricingCountTypeOption}}>{{pricingCountTypeOption}}</option>
               {{/each}}
@@ -77,7 +77,7 @@
         <div class="col-lg-2"><span class="field">Pricing Condition</span></div>
         <div class="col-lg-3">
             <select class="form-control" onchange={{action "selectPricingCondition" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each pricingConditions as |pricingConditionOption|}}
                   <option value={{pricingConditionOption}} selected={{eq pricingConditionOption pricingCondition}}>{{pricingConditionOption}}</option>
               {{/each}}
@@ -96,7 +96,7 @@
         <div class="col-lg-2"><span class="field">Status</span></div>
         <div class="col-lg-3">
             <select class="form-control" onchange={{action "selectPricingStatus" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each pricingStatuses as |pricingStatusOption|}}
                   <option value={{pricingStatusOption}} selected={{eq pricingStatusOption status}}>{{pricingStatusOption}}</option>
               {{/each}}

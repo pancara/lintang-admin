@@ -26,7 +26,7 @@
         <div class="col-lg-2"><span class="field">Voucher Type</span></div>
         <div class="col-lg-3">
             <select class="form-control" onchange={{action "selectVoucherType" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each voucherTypes as |voucherTypeOption|}}
                   <option value={{voucherTypeOption}} selected={{eq voucherType voucherTypeOption}}>{{voucherTypeOption}}</option>
               {{/each}}
@@ -37,7 +37,7 @@
         <div class="col-lg-2"><span class="field">Status</span></div>
         <div class="col-lg-3">
             <select class="form-control" onchange={{action "selectVoucherStatus" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each voucherStatuses as |voucherStatusOption|}}
                   <option value={{voucherStatusOption}} selected={{eq status voucherStatusOption}}>{{voucherStatusOption}}</option>
               {{/each}}
@@ -76,7 +76,7 @@
           <div class="col-lg-2"><span class="field">Amount Type</span></div>
           <div class="col-lg-3">
               <select class="form-control" onchange={{action "selectAmountType" value="target.value"}}>
-                  <option>-</option>
+                  <option value="">-</option>
                 {{#each voucherAmountTypes as |amountTypeOption|}}
                     <option value={{amountTypeOption}} selected={{eq amountType amountTypeOption}}>{{amountTypeOption}}</option>
                 {{/each}}

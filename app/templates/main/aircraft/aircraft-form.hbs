@@ -157,7 +157,7 @@
         <div class="col-lg-2"><span class="field">Status</span></div>
         <div class="col-lg-2">
             <select class="form-control" onchange={{action "selectStatus" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each aircraftStatuses as |statusOption|}}
                   <option value={{statusOption}} selected={{eq status statusOption}}>{{statusOption}}</option>
               {{/each}}

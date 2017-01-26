@@ -71,7 +71,7 @@
         <div class="col-lg-2"><span class="field">Gender</span></div>
         <div class="col-lg-5">
             <select class="form-control" onchange={{action "selectGender" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each genders as |genderOption|}}
                   <option value={{genderOption}} selected={{eq gender genderOption}}>{{genderOption}}</option>
               {{/each}}
@@ -92,7 +92,7 @@
         </div>
         <div class="col-lg-3">
             <select class="form-control" onchange={{action "selectRole" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each operatorRoles as |roleOption|}}
                   <option value={{roleOption}} selected={{eq role roleOption}}>{{roleOption}}</option>
               {{/each}}

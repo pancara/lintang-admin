@@ -80,7 +80,7 @@
         <div class="col-lg-3">
             <select class="form-control"
                     onchange={{action "selectAircraftType" value="target.value"}} disabled={{not newEntry}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each aircraftTypes as |aircraftTypeOption|}}
                 {{#if (eq aircraftType aircraftTypeOption) }}
                     <option value={{aircraftTypeOption}} selected>{{aircraftTypeOption}}</option>

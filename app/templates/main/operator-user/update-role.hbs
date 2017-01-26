@@ -63,7 +63,7 @@
         </div>
         <div class="col-lg-3">
             <select class="form-control" onchange={{action "selectRole" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each userRoles as |roleOption|}}
                   <option value={{roleOption}} selected={{eq role roleOption}}>{{roleOption}}</option>
               {{/each}}

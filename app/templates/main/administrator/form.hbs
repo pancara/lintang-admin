@@ -30,7 +30,7 @@
         <div class="col-lg-2"><span class="field">Gender</span></div>
         <div class="col-lg-2">
             <select class="form-control" onchange={{action "selectGender" value="target.value"}}>
-                <option>-</option>
+                <option value="">-</option>
               {{#each genders as |genderOption|}}
                   <option value={{genderOption}} selected={{eq gender genderOption}}>{{genderOption}}</option>
               {{/each}}

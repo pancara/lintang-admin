@@ -49,7 +49,7 @@
         </div>
         <div class="col-lg-3">
             <select class="form-control" onchange={{action "selectAircraftType" value="target.value"}}>
-              <option>-</option>
+              <option value="">-</option>
               {{#each aircraftTypes as |aircraftTypeOption|}}
                   <option value={{aircraftTypeOption}}>{{aircraftTypeOption}}</option>
               {{/each}}
