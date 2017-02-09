@@ -58,7 +58,12 @@ export default Ember.Controller.extend({
       };
 
       this.get('requestSender').ajaxPut('password', JsonUtil.toJson(params), header).then(function (json) {
+
         let prop = {
+          oldPassword : null,
+          newPassword: null,
+          confirmation: null,
+
           errorMessage: 'Password updated',
           error: false,
           success: true

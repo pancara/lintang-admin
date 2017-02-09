@@ -9,8 +9,11 @@ export default Ember.Controller.extend({
   hasError: false,
   success: false,
   rememberMe: false,
-  username: 'koko@cring.id',
-  password: 'Jakarta2014!',
+  username: '',
+  password: '',
+
+  //username: 'koko@cring.id',
+  //password: 'Jakarta2014!',
 
   actions: {
     resetPassword(username, token, password) {

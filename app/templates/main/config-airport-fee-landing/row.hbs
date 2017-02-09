@@ -11,7 +11,7 @@
 </td>
 <td>{{data.airport.icaoCode}}</td>
 <td>{{data.airport.name}}</td>
-<td>{{data.amount}}</td>
+<td>{{format-number data.amount precision=0}}</td>
 <td>
     <button class="btn btn-primary btn-xs" {{action "click"  "edit" data}}>
       {{fa-icon "pencil"}}

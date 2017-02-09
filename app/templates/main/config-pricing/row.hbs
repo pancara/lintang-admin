@@ -20,7 +20,7 @@
 <td>{{data.pricingName}}</td>
 <td>{{data.pricingLevel}}</td>
 <td>{{data.amountType}}</td>
-<td>{{data.pricingValue}}</td>
+<td>{{format-number data.pricingValue precision=0}}</td>
 <td>
     <button class="btn btn-primary btn-xs" {{action "click"  "editPricing" data}}>
         edit

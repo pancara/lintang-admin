@@ -1,6 +1,6 @@
 <td>{{index}}.</td>
 <td>{{data.type}}</td>
-<td>{{data.configValue}}</td>
+<td>{{format-number data.configValue precision=0}}</td>
 <td>
     <button class="btn btn-primary btn-xs" {{action "click"  "changeValue" data}}>
         {{fa-icon "pencil"}}

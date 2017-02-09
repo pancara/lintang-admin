@@ -23,8 +23,6 @@
       {{/if}}
     {{/if}}
   {{/if}}
-</td>
-<td>
 
   {{#if (eq data.orderStatus "CREATED")}}
       <span class="pw-label pw-label-primary pw-label-xs">C</span>
@@ -57,14 +55,18 @@
 </td>
 <td>{{data.number}}</td>
 <td>
-
+  {{data.customer.username}}<br/>
+  {{data.customer.firstName}} &nbsp; {{data.customer.lastName}}
+</td>
+<td>
     {{#if data.orderDate }}
-      {{moment-format data.orderDate 'DD MMMM YYYY HH:mm:ssZ'}}
+      {{moment-format data.orderDate 'DD MMM YYYY HH:mm:ss'}}
     {{/if}}
 </td>
 <td>
-  {{data.customer.username}}<br/>
-  {{data.customer.firstName}} &nbsp; {{data.customer.lastName}}
+  {{#each data.charter.legs as |leg index|}}
+      {{moment-format leg.flightDate 'DD MMM YYYY HH:mm:ss'}}<br/>
+  {{/each}}
 </td>
 <td>
   {{data.charter.aircraft.registrationNumber}} <br/>

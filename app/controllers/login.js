@@ -9,8 +9,11 @@ export default Ember.Controller.extend({
   hasError: false,
   success: false,
   rememberMe: false,
-  username: 'koko@cring.id',
-  password: 'Jakarta2014!',
+  username: '',
+  password: '',
+
+  //username: 'koko@cring.id',
+  //password: 'Jakarta2014!',
 
   actions: {
     doLogin(username, password) {
@@ -51,8 +54,10 @@ export default Ember.Controller.extend({
         that.set('success', false);
         if (reason.xhr.status >= 500 || reason.xhr.status === 0) {
           that.set('errorMessage', 'Can not connect to server');
+        } else if (reason.xhr.responseText != null) {
+          that.set('errorMessage', reason.xhr.responseText);
         } else {
-          that.set('errorMessage', 'Invalid credentials');
+          that.set('errorMessage', 'Invalid inputs.');
         }
       });
     }

@@ -82,7 +82,7 @@
         <tr>
             <td>End Flight :</td>
             <td>
-              {{moment-format data.endFlight 'DD MMMM YYYY hh:mm:ss'}} GMT+{{data.charter.localTimeGmt}}
+              {{moment-format data.endFlight 'DD MMM YYYY hh:mm:ss'}}+{{data.charter.localTimeGmt}}
             </td>
         </tr>
         </tbody>
@@ -105,7 +105,7 @@
         {{#each data.charter.legs as |leg index|}}
             <tr>
                 <td>{{add index 1 }}.</td>
-                <td>{{leg.flightDate}}</td>
+                <td>{{moment-format leg.flightDate 'DD MMM YYYY HH:mm:ss'}}</td>
                 <td>
                   {{leg.originAirport.icaoCode}}<br/>
                   {{leg.originAirport.name}}<br/>
@@ -137,39 +137,41 @@
         <tbody>
         <tr>
             <td colspan="2">Amount</td>
-            <td style="text-align: right;">{{data.payment.amount}}</td>
+            <td style="text-align: right;">
+              {{format-number data.payment.amount precision=0}}
+            </td>
         </tr>
 
         <tr>
             <td colspan="2">Discount</td>
-            <td style="text-align: right;">{{data.payment.discount}}</td>
+            <td style="text-align: right;">{{format-number data.payment.discount precision=0}}</td>
         </tr>
         <tr>
             <td colspan="2">Discount</td>
-            <td style="text-align: right;">{{data.payment.amountAfterDiscount}}</td>
+            <td style="text-align: right;">{{format-number data.payment.amountAfterDiscount precision=0}}</td>
         </tr>
         <tr>
             <td colspan="2">Pricing</td>
-            <td style="text-align: right;">{{data.payment.totalPricing}}</td>
+            <td style="text-align: right;">{{format-number data.payment.totalPricing precision=0}}</td>
         </tr>
 
         {{#each data.payment.pricings as |pricing|}}
             <tr>
                 <td style="width: 10px;">&nbsp;</td>
                 <td>- &nbsp;{{pricing.pricingName}}</td>
-                <td style="text-align: right;">{{pricing.amount}}</td>
+                <td style="text-align: right;">{{format-number pricing.amount precision=0}}</td>
             </tr>
         {{/each}}
 
         <tr>
             <td colspan="2">Sub Total</td>
-            <td style="text-align: right;">{{data.payment.subTotal}}</td>
+            <td style="text-align: right;">{{format-number data.payment.subTotal precision=0}}</td>
         </tr>
 
 
         <tr>
             <td colspan="2">Total</td>
-            <td style="text-align: right;">{{data.payment.totalAmount}}</td>
+            <td style="text-align: right;">{{format-number data.payment.totalAmount precision=0}}</td>
         </tr>
         </tbody>
     </table>
